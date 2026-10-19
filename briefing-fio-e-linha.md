@@ -97,8 +97,15 @@
 
 ## Bônus (parte 2)
 - Imagem real do produto, no lugar do ícone
-- Peças mais vendidas
 - Filtro por tipo de peça na lista de estoque
+- **Dashboard** (quinta tela), sempre lendo dados que já existem:
+  - Receita da semana e do mês
+  - Lucro da semana e do mês (receita menos o custo das peças)
+  - Top 5 peças mais vendidas
+  - Alertas sempre à mostra, em dois níveis: estoque baixo (3 peças ou menos) e sem estoque (tamanho zerado), com cores diferentes
+  - Gráfico de vendas por dia
+  - Bônus do bônus: peças paradas e vendas por categoria
+  - Devoluções descontam da receita e do lucro, no dia em que foram feitas
 - Limite de alerta diferente por tipo (ex.: acessórios só alertam quando quase zerar)
 
 ## Decisões técnicas
@@ -110,3 +117,4 @@
 ## Em aberto
 - Como registrar uma devolução parcial no card (ex.: levou 3, devolveu 1)
 - Como a Marina cadastra os usuários da loja
+- O que a venda guarda sobre o preço, para que mudar o valor de uma peça no futuro não altere a receita das vendas antigas
