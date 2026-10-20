@@ -41,6 +41,10 @@ input:focus {
     outline-offset: 0.125rem;
 }
 
+label {
+    font-weight: 600;
+}
+
 .btn-primario {
     padding: 0.8rem;
     border: none;
