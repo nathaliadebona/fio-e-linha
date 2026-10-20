@@ -1,0 +1,22 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 28.125rem;
+}
+
+.campo-login {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}

@@ -16,25 +16,31 @@
 </head>
 
 <body>
-    <span>Fio &amp; Linha</span>
-
-    <div class="mensagem-erro">
-        <p>Usuário ou senha incorretos</p>
-    </div>
-
-    <form action="" id="login-form">
-        <label for="usuario">Usuário</label>
-        <input type="text" name="usuario" id="usuario" required>
+    <main>
+        <span>Fio &amp; Linha</span>
         
-        <label for="senha">Senha</label>
-        <div class="area-senha">
-            <input type="password" name="senha" id="senha" required>
-            <button type="button" class="toggle-senha" aria-label="Mostrar senha">
-                <i class="fa-regular fa-eye"></i>
-            </button>
+        <div class="mensagem-erro">
+            <p>Usuário ou senha incorretos</p>
         </div>
 
-        <button type="submit" id="login-btn">Entrar</button>
-    </form>
+        <form action="" id="login-form">
+            <div class="campo-login">
+                <label for="usuario">Usuário</label>
+                <input type="text" name="usuario" id="usuario" required>
+            </div>
+        
+            <div class="campo-login">
+                <label for="senha">Senha</label>
+                <div class="area-senha">
+                    <input type="password" name="senha" id="senha" required>
+                    <button type="button" class="toggle-senha" aria-label="Mostrar senha">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" id="login-btn">Entrar</button>
+        </form>
+    </main>
 </body>
 </html>
