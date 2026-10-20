@@ -1,0 +1,12 @@
+:root {
+    --cor-fundo: #FAF6F0;
+    --cor-fundo-alt: #EFE6DA;
+    --cor-acoes: #B5532F;
+    --cor-detalhes: #6B6F3A;
+    --cor-texto: #3B2F2A;
+    --cor-baixo-estoque: #D9A03F;
+    --cor-erro: #A63D2F;
+
+    --fonte-titulos: 'Fraunces', serif;
+    --fonte-corpo: 'DM Sans', sans-serif;
+}
