@@ -13,9 +13,22 @@
 
 ## Visual
 - Leve e aconchegante, com cara de loja artesanal
-- Paleta: off-white, terracota e verde-oliva
 - Nada frio ou "tecnológico"
-- Destaque de ações importantes em terracota; excluir em vermelho mais fechado (tom tijolo)
+
+**Paleta**
+- Fundo (off-white): `#FAF6F0`
+- Areia (menu lateral, cards, linhas alternadas): `#EFE6DA`
+- Terracota (botões principais e ações): `#B5532F`
+- Verde-oliva (sucesso e detalhes): `#6B6F3A`
+- Texto (marrom escuro): `#3B2F2A`
+- Alerta de estoque baixo (ocre): `#D9A03F`
+- Excluir e erros (vermelho tijolo): `#A63D2F`
+- O terracota fica só para ações, para não confundir o alerta com algo clicável
+- Conferir o contraste do texto sobre os botões com um verificador (ex.: WebAIM)
+
+**Fontes (Google Fonts)**
+- Títulos: Fraunces
+- Texto, tabelas e números: DM Sans
 
 ## Quem usa
 - Mais de uma pessoa trabalha na loja, então precisa de **login**
@@ -52,7 +65,7 @@
 
 **Alerta**
 - Faixa no topo: "Você tem produtos com baixa quantidade em estoque", com botão que leva à lista
-- Etiqueta de tamanho em terracota quando houver **3 peças ou menos**
+- Etiqueta de tamanho em ocre quando houver **3 peças ou menos**
 
 ---
 
