@@ -7,6 +7,13 @@ main {
     padding: 2rem;
 }
 
+h1 {
+    margin-bottom: 1rem;
+    font-family: var(--fonte-titulos);
+    font-size: 2.5rem;
+    color: var(--cor-detalhes);
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -19,4 +26,28 @@ form {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+}
+
+.area-senha {
+    position: relative;
+}
+
+.area-senha input {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+.toggle-senha {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: none;
+    color: var(--cor-texto);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.toggle-senha i {
+    font-size: 1.1rem;
 }

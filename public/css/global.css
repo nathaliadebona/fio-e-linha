@@ -2,6 +2,7 @@
     --cor-fundo: #FAF6F0;
     --cor-fundo-alt: #EFE6DA;
     --cor-acoes: #B5532F;
+    --cor-acoes-hover: #9A4628;
     --cor-detalhes: #6B6F3A;
     --cor-texto: #3B2F2A;
     --cor-baixo-estoque: #D9A03F;
@@ -38,4 +39,21 @@ input {
 input:focus {
     outline: 0.125rem solid var(--cor-acoes);
     outline-offset: 0.125rem;
+}
+
+.btn-primario {
+    padding: 0.8rem;
+    border: none;
+    font-size: 1rem;
+    color: var(--cor-fundo);
+    border-radius: 0.5rem;
+    background-color: var(--cor-acoes);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+    .btn-primario:hover {
+        background-color: var(--cor-acoes-hover);
+    }
 }
