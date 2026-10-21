@@ -1,0 +1,11 @@
+.alerta-estoque {
+    display: none;
+    padding: 1rem;
+    color: var(--cor-texto);
+    border-radius: 0.5rem;
+    background-color: var(--cor-baixo-estoque);
+}
+
+.alerta-estoque.visivel {
+    display: block;
+}
