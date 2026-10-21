@@ -26,6 +26,10 @@ formLogin.addEventListener('submit', async (event) => {
     });
 
     if (resposta.ok) {
+        const dados = await resposta.json();
+        
+        localStorage.setItem('token', dados.token);
+
         window.location.href = '/estoque.html';
      } else {
         mensagemErro.classList.add('visivel');

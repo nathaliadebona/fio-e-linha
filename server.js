@@ -1,6 +1,7 @@
 const express = require('express');
 const usuarios = require('./data/usuarios.json');
 const app = express();
+const sessoes = {};
 
 app.use(express.json());
 
@@ -16,7 +17,10 @@ app.post('/api/login', (req, res) => {
     });
     
     if (usuarioEncontrado) {
-        res.json({ ok: true });
+        const token = crypto.randomUUID();
+        sessoes[token] = usuarioEncontrado.usuario;
+
+        res.json({ ok: true, token: token });
     } else {
         res.status(401).json({ ok: false });
     }
