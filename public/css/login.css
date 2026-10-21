@@ -23,6 +23,10 @@ h1 {
     background-color: var(--cor-erro);
 }
 
+.mensagem-erro.visivel {
+    display: block;
+}
+
 form {
     display: flex;
     flex-direction: column;
