@@ -8,6 +8,16 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+function verificarToken(req, res, next) {
+    const token = req.headers.authorization;
+
+    if (sessoes[token]) {
+        next();
+    } else {
+        res.status(401).json({ ok: false });
+    }
+}
+
 app.get('/', (req, res) => {
     res.redirect('/login.html');
 });
@@ -37,7 +47,7 @@ app.get('/api/sessao', (req, res) => {
     }
 });
 
-app.get('/api/pecas', (req, res) => {
+app.get('/api/pecas', verificarToken, (req, res) => {
     res.json(pecas);
 });
 
