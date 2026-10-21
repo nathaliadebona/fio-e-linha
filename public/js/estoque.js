@@ -5,8 +5,12 @@ async function carregarPecas() {
     const pecas = await resposta.json();
     
     pecas.forEach((peca) => {
+        const tamanhos = Object.entries(peca.tamanhos)
+            .map(([tamanho, quantidade]) => `${tamanho} ${quantidade}`)
+            .join(' · ');
+
         const item = document.createElement('li');
-        item.textContent = `${peca.nome} (${peca.codigo})`;
+        item.textContent = `${peca.nome} (${peca.codigo}) - ${tamanhos}`;
         listaPecas.appendChild(item);
     });
 }
