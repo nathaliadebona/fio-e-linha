@@ -1,5 +1,6 @@
 .alerta-estoque {
     display: none;
+    margin-bottom: 1rem;
     padding: 1rem;
     color: var(--cor-texto);
     border-radius: 0.5rem;
@@ -8,6 +9,34 @@
 
 .alerta-estoque.visivel {
     display: block;
+}
+
+.barra-busca {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.campo-busca {
+    position: relative;
+}
+
+.campo-busca input {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+.campo-busca button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: none;
+    font-size: 1.1rem;
+    color: var(--cor-detalhes);
+    background-color: transparent;
+    cursor: pointer;
 }
 
 #lista-pecas {
