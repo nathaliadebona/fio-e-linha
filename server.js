@@ -26,5 +26,15 @@ app.post('/api/login', (req, res) => {
     }
 });
 
+app.get('/api/sessao', (req, res) => {
+    const token = req.headers.authorization;
+
+    if (sessoes[token]) {
+        res.json({ ok: true, usuario: sessoes[token] });
+    } else {
+        res.status(401).json({ ok: false });
+    }
+});
+
 app.listen(3000);
 
