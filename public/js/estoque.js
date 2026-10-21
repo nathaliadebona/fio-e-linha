@@ -6,13 +6,53 @@ async function carregarPecas() {
     const pecas = await resposta.json();
     
     pecas.forEach((peca) => {
-        const tamanhos = Object.entries(peca.tamanhos)
-            .map(([tamanho, quantidade]) => `${tamanho} ${quantidade}`)
-            .join(' · ');
-
         const item = document.createElement('li');
-        item.textContent = `${peca.nome} (${peca.codigo}) - ${tamanhos}`;
+
+        const titulo = document.createElement('p');
+        titulo.textContent = `${peca.nome} (${peca.codigo})`;
+        
+        const etiquetas = document.createElement('div');
+        etiquetas.classList.add('etiquetas');
+
+        const preco = document.createElement('p');
+        preco.textContent = peca.venda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        const acoes = document.createElement('div');
+        acoes.classList.add('acoes');
+
+        const btnDetalhes = document.createElement('button');
+        btnDetalhes.type = 'button';
+        btnDetalhes.textContent = 'Detalhes';
+
+        const btnEditar = document.createElement('button');
+        btnEditar.type = 'button';
+        btnEditar.textContent = 'Editar';
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.type = 'button';
+        btnExcluir.textContent = 'Excluir';
+
+        acoes.appendChild(btnDetalhes);
+        acoes.appendChild(btnEditar);
+        acoes.appendChild(btnExcluir);
+
         listaPecas.appendChild(item);
+        item.appendChild(titulo);
+        item.appendChild(etiquetas);
+        item.appendChild(preco);
+        item.appendChild(acoes);
+
+        Object.entries(peca.tamanhos).forEach(([tamanho, quantidade]) => {
+            const etiqueta = document.createElement('span');
+            etiqueta.classList.add('etiqueta');
+            etiqueta.textContent = `${tamanho} ${quantidade}`;
+            
+            if (quantidade <= 3) {
+                etiqueta.classList.add('baixo');
+            }
+
+            etiquetas.appendChild(etiqueta);
+        });
 
         const estoqueBaixo = Object.values(peca.tamanhos).some((quantidade) => quantidade <= 3);
         

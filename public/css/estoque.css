@@ -9,3 +9,9 @@
 .alerta-estoque.visivel {
     display: block;
 }
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}

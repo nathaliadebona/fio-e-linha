@@ -32,7 +32,7 @@
         "categoria": "calca",
         "codigo": "CA-001",
         "custo": 49.9,
-        "venda": 99.9,
+        "venda": 85.9,
         "fornecedor": "Linhas e agulhas",
         "dataChegada": "2026-09-23",
         "tamanhos": { "36": 5, "38": 2, "40": 3}
