@@ -10,5 +10,31 @@
         "fornecedor": "Tecidos Aurora",
         "dataChegada": "2026-10-15",
         "tamanhos": { "P": 2, "M": 1, "G": 3}
+    },
+
+    {
+        "id": 2,
+        "nome": "Vestido Midi Floral",
+        "cor": "Rosa",
+        "categoria": "vestido",
+        "codigo": "VE-001",
+        "custo": 50,
+        "venda": 99.9,
+        "fornecedor": "Carretel tecidos",
+        "dataChegada": "2026-08-10",
+        "tamanhos": { "P": 4, "M": 3, "G": 5}
+    },
+
+    {
+        "id": 3,
+        "nome": "Calça jeans mom",
+        "cor": "Azul",
+        "categoria": "calca",
+        "codigo": "CA-001",
+        "custo": 49.9,
+        "venda": 99.9,
+        "fornecedor": "Linhas e agulhas",
+        "dataChegada": "2026-09-23",
+        "tamanhos": { "36": 5, "38": 2, "40": 3}
     }
 ]
