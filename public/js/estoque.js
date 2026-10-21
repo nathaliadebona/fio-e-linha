@@ -1,12 +1,23 @@
 const listaPecas = document.getElementById('lista-pecas');
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
+const icones = {
+    blusa: 'fa-shirt',
+    vestido: 'fa-person-dress',
+    calca: 'fa-tag',
+    acessorio: 'fa-gem'
+};
+
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
     const pecas = await resposta.json();
     
     pecas.forEach((peca) => {
         const item = document.createElement('li');
+
+        const icone = document.createElement('i');
+        icone.classList.add('fa-solid', icones[peca.categoria]);
+        icone.setAttribute('aria-hidden', 'true');
 
         const titulo = document.createElement('p');
         titulo.textContent = `${peca.nome} (${peca.codigo})`;
@@ -37,6 +48,7 @@ async function carregarPecas() {
         acoes.appendChild(btnExcluir);
 
         listaPecas.appendChild(item);
+        item.appendChild(icone);
         item.appendChild(titulo);
         item.appendChild(etiquetas);
         item.appendChild(preco);

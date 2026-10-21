@@ -10,6 +10,22 @@
     display: block;
 }
 
+#lista-pecas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+#lista-pecas li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--cor-fundo-alt);
+}
+
 .etiquetas {
     display: flex;
     flex-wrap: wrap;

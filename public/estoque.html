@@ -33,6 +33,20 @@
             <a href="#lista-pecas">Ver peças</a>
         </div>
 
+        <div class="barra-busca">
+            <input type="search" id="busca" placeholder="Buscar por nome ou código" aria-label="Buscar peças">
+
+            <select name="filtro-categoria" id="filtro-categoria" aria-label="Filtrar por categoria">
+                <option value="">Todas as categorias</option>
+                <option value="blusa">Blusa</option>
+                <option value="vestido">Vestido</option>
+                <option value="calca">Calça</option>
+                <option value="acessorio">Acessório</option>
+            </select>
+
+            <button type="button" id="nova-peca-btn" class="btn-primario"><i class="fa-solid fa-plus" aria-hidden="true"></i> Nova peça</button>
+        </div>
+
         <ul id="lista-pecas">
 
         </ul>
