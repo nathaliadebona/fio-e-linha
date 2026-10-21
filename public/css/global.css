@@ -25,6 +25,10 @@ body {
     background-color: var(--cor-fundo);
 }
 
+main {
+    padding-bottom: 5rem;
+}
+
 input, button {
     font-family: inherit;
 }
