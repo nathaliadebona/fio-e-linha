@@ -1,0 +1,25 @@
+{
+  "name": "fio-e-linha",
+  "version": "1.0.0",
+  "description": "Projeto de portfólio: controle de estoque para a loja fictícia Fio & Linha, feito com JavaScript puro e um backend simples em Node.js.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathaliadebona/fio-e-linha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nathaliadebona/fio-e-linha/issues"
+  },
+  "homepage": "https://github.com/nathaliadebona/fio-e-linha#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
