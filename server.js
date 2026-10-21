@@ -1,4 +1,5 @@
 const express = require('express');
+const usuarios = require('./data/usuarios.json');
 const app = express();
 
 app.use(express.json());
@@ -10,8 +11,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-    console.log(req.body);
-    res.json({ ok: true });
+    const usuarioEncontrado = usuarios.find((u) => {
+        return u.usuario === req.body.usuario && u.senha === req.body.senha;
+    });
+    
+    if (usuarioEncontrado) {
+        res.json({ ok: true });
+    } else {
+        res.status(401).json({ ok: false });
+    }
 });
 
 app.listen(3000);
