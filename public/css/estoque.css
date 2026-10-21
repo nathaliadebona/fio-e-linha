@@ -2,6 +2,7 @@
     display: none;
     margin-bottom: 1rem;
     padding: 1rem;
+    text-align: center;
     color: var(--cor-texto);
     border-radius: 0.5rem;
     background-color: var(--cor-baixo-estoque);
@@ -9,6 +10,12 @@
 
 .alerta-estoque.visivel {
     display: block;
+}
+
+.alerta-estoque a {
+    font-weight: 600;
+    color: var(--cor-texto);
+    text-decoration: underline;
 }
 
 .barra-busca {
@@ -59,4 +66,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
+}
+
+.etiqueta {
+    padding: 0.2rem 1rem;
+    color: var(--cor-texto);
+    border-radius: 1rem;
+    background-color: var(--cor-fundo);
+}
+
+.etiqueta.baixo {
+    font-weight: 600;
+    background-color: var(--cor-baixo-estoque);
 }
