@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "categoria": "blusa",
+        "codigo": "BL-001",
+        "custo": 45,
+        "venda": 89.9,
+        "fornecedor": "Tecidos Aurora",
+        "dataChegada": "2026-10-15",
+        "tamanhos": { "P": 2, "M": 1, "G": 3}
+    }
+]

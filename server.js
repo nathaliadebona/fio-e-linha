@@ -1,5 +1,6 @@
 const express = require('express');
 const usuarios = require('./data/usuarios.json');
+const pecas = require('./data/pecas.json');
 const app = express();
 const sessoes = {};
 
@@ -34,6 +35,10 @@ app.get('/api/sessao', (req, res) => {
     } else {
         res.status(401).json({ ok: false });
     }
+});
+
+app.get('/api/pecas', (req, res) => {
+    res.json(pecas);
 });
 
 app.listen(3000);
