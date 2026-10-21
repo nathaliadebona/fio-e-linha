@@ -9,3 +9,10 @@ async function verificarSessao() {
 }
 
 verificarSessao();
+
+const sairBtn = document.getElementById('sair-btn');
+
+sairBtn.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login.html';
+});
