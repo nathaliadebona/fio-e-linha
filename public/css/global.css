@@ -56,6 +56,30 @@ label {
     transition: background-color 0.3s ease;
 }
 
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-fundo-alt);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    list-style: none;
+}
+
+nav a, nav button {
+    border: none;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--cor-texto);
+    background-color: transparent;
+    cursor: pointer;
+}
+
 @media (hover: hover) {
     .btn-primario:hover {
         background-color: var(--cor-acoes-hover);
