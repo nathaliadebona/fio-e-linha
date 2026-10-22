@@ -144,3 +144,15 @@
     overflow-y: auto;
 }
 
+#fechar-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    background-color: transparent;
+    cursor: pointer;
+}
+
