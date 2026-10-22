@@ -162,6 +162,7 @@ buscaBtn.addEventListener('click', () => {
 });
 
 novaPecaBtn.addEventListener('click', () => {
+    erroTamanhos.hidden = true;
     modalPeca.showModal();
 });
 
@@ -182,6 +183,7 @@ categoriaSelect.addEventListener('change', () => {
 
         input.addEventListener('change', () => {
             quantidade.hidden = !input.checked;
+            erroTamanhos.hidden = true;
             quantidade.required = input.checked;
         });
 
@@ -215,6 +217,7 @@ formPeca.addEventListener('submit', async (event) => {
 
     if (Object.keys(tamanhos).length === 0) {
         erroTamanhos.hidden = false;
+        erroTamanhos.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
     }
 
