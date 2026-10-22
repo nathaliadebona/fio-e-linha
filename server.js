@@ -62,5 +62,10 @@ app.post('/api/pecas', verificarToken, (req, res) => {
     res.json({ ok: true });
 });
 
+app.delete('/api/pecas/:id', verificarToken, (req, res) => {
+    console.log(req.params.id);
+    res.json({ ok: true });
+});
+
 app.listen(3000);
 
