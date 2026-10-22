@@ -8,11 +8,19 @@ const icones = {
     acessorio: 'fa-gem'
 };
 
+let todasAsPecas = [];
+
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
     const pecas = await resposta.json();
     
-    pecas.forEach((peca) => {
+    todasAsPecas = pecas;
+
+    renderizarPecas(pecas);
+}
+
+function renderizarPecas(lista) {
+    lista.forEach((peca) => {
         const item = document.createElement('li');
 
         const cabecalho = document.createElement('div');
