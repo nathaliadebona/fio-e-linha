@@ -63,7 +63,15 @@ app.post('/api/pecas', verificarToken, (req, res) => {
 });
 
 app.delete('/api/pecas/:id', verificarToken, (req, res) => {
-    console.log(req.params.id);
+    const id = Number(req.params.id);
+    const indice = pecas.findIndex((p) => p.id === id);
+
+    if (indice === -1) {
+        return res.status(404).json({ ok: false });
+    }
+    pecas.splice(indice, 1);
+    fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
+
     res.json({ ok: true });
 });
 

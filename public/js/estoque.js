@@ -84,14 +84,17 @@ function renderizarPecas(lista) {
         iconeExcluir.classList.add('fa-solid', 'fa-trash');
         iconeExcluir.setAttribute('aria-hidden', 'true');
 
-        btnExcluir.addEventListener('click', () => {
+        btnExcluir.addEventListener('click', async () => {
             const confirmou = confirm(`Excluir ${peca.nome}?`);
             
             if (!confirmou) {
                 return;
             }
-            
-            console.log(peca.id);
+
+            await fetch(`/api/pecas/${peca.id}`, {
+                method: 'DELETE',
+                headers: { Authorization: token }
+            });
         });
 
         btnExcluir.appendChild(iconeExcluir);

@@ -64,19 +64,5 @@
       "44": 5
     },
     "id": 4
-  },
-  {
-    "categoria": "acessorio",
-    "nome": "Anel Prata",
-    "cor": "Prata",
-    "codigo": "AN-001",
-    "custo": 59.9,
-    "venda": 109.9,
-    "fornecedor": "Prata Fina",
-    "dataChegada": "2026-10-01",
-    "tamanhos": {
-      "Único": 5
-    },
-    "id": 5
   }
 ]
