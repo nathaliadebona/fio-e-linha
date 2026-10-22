@@ -5,8 +5,10 @@ const buscaBtn = document.getElementById('busca-btn');
 const novaPecaBtn = document.getElementById('nova-peca-btn');
 const modalPeca = document.getElementById('modal-peca');
 const fecharModalBtn = document.getElementById('fechar-modal');
+const formPeca = document.getElementById('form-peca');
 const categoriaSelect = document.getElementById('categoria');
 const listaTamanhos = document.getElementById('lista-tamanhos');
+const dataChegada = document.getElementById('data-chegada');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
@@ -175,6 +177,23 @@ categoriaSelect.addEventListener('change', () => {
         label.appendChild(quantidade);
         listaTamanhos.appendChild(label);
     });
+});
+
+formPeca.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const novaPeca = {
+        categoria: categoria.value,
+        nome: nome.value,
+        cor: cor.value,
+        codigo: codigo.value,
+        custo: Number(custo.value),
+        venda: Number(venda.value),
+        fornecedor: fornecedor.value,
+        dataChegada: dataChegada.value
+    };
+
+    console.log(novaPeca);
 });
 
 carregarPecas();
