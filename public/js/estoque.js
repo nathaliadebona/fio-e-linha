@@ -1,4 +1,5 @@
 const listaPecas = document.getElementById('lista-pecas');
+const filtroCategoria = document.getElementById('filtro-categoria');
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
 const icones = {
@@ -98,5 +99,12 @@ function renderizarPecas(lista) {
         }
     });
 }
+
+filtroCategoria.addEventListener('change', () => {
+    const filtradas = todasAsPecas.filter((peca) => {
+        return filtroCategoria.value === '' || peca.categoria === filtroCategoria.value;
+    });
+    renderizarPecas(filtradas);
+});
 
 carregarPecas();
