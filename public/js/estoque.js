@@ -13,13 +13,15 @@ let todasAsPecas = [];
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
     const pecas = await resposta.json();
-    
+
     todasAsPecas = pecas;
 
     renderizarPecas(pecas);
 }
 
 function renderizarPecas(lista) {
+    listaPecas.replaceChildren();
+
     lista.forEach((peca) => {
         const item = document.createElement('li');
 
