@@ -160,8 +160,19 @@ categoriaSelect.addEventListener('change', () => {
         input.type = 'checkbox';
         input.value = tamanho;
 
+        input.addEventListener('change', () => {
+            quantidade.hidden = !input.checked;
+        });
+
+        const quantidade = document.createElement('input');
+        quantidade.type = 'number';
+        quantidade.min = '1';
+        quantidade.hidden = true;
+        quantidade.setAttribute('aria-label', `Quantidade do tamanho ${tamanho}`);
+
         label.appendChild(input);
         label.append(tamanho);
+        label.appendChild(quantidade);
         listaTamanhos.appendChild(label);
     });
 });
