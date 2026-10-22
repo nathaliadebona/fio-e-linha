@@ -68,6 +68,11 @@
     gap: 0.5rem;
 }
 
+.cabecalho-peca i {
+    font-size: 1.3rem;
+    color: var(--cor-detalhes);
+}
+
 .nome-peca {
     font-family: var(--fonte-titulos);
     font-size: 1.2rem;
