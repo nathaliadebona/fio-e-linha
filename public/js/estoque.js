@@ -5,6 +5,8 @@ const buscaBtn = document.getElementById('busca-btn');
 const novaPecaBtn = document.getElementById('nova-peca-btn');
 const modalPeca = document.getElementById('modal-peca');
 const fecharModalBtn = document.getElementById('fechar-modal');
+const categoriaSelect = document.getElementById('categoria');
+const listaTamanhos = document.getElementById('lista-tamanhos');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
@@ -13,6 +15,13 @@ const icones = {
     vestido: 'fa-person-dress',
     calca: 'fa-tag',
     acessorio: 'fa-gem'
+};
+
+const tamanhosPorCategoria = {
+    blusa: ['P', 'M', 'G', 'GG'],
+    vestido: ['P', 'M', 'G', 'GG'],
+    calca: ['36', '38', '40', '42', '44'],
+    acessorio: ['Único']
 };
 
 let todasAsPecas = [];
@@ -138,6 +147,23 @@ novaPecaBtn.addEventListener('click', () => {
 
 fecharModalBtn.addEventListener('click', () => {
     modalPeca.close();
+});
+
+categoriaSelect.addEventListener('change', () => {
+    const tamanhos = tamanhosPorCategoria[categoriaSelect.value] || [];
+    listaTamanhos.replaceChildren();
+
+    tamanhos.forEach((tamanho) => {
+        const label = document.createElement('label');
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.value = tamanho;
+
+        label.appendChild(input);
+        label.append(tamanho);
+        listaTamanhos.appendChild(label);
+    });
 });
 
 carregarPecas();
