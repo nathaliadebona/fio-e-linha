@@ -1,5 +1,7 @@
 const listaPecas = document.getElementById('lista-pecas');
 const filtroCategoria = document.getElementById('filtro-categoria');
+const campoBusca = document.getElementById('busca');
+const buscaBtn = document.getElementById('busca-btn');
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
 const icones = {
@@ -100,11 +102,25 @@ function renderizarPecas(lista) {
     });
 }
 
-filtroCategoria.addEventListener('change', () => {
+function aplicarFiltros() {
+    const texto = campoBusca.value.toLowerCase().trim();
+
     const filtradas = todasAsPecas.filter((peca) => {
-        return filtroCategoria.value === '' || peca.categoria === filtroCategoria.value;
+        const passaCategoria = filtroCategoria.value === '' || peca.categoria === filtroCategoria.value;
+    
+        const passaBusca = peca.nome.toLowerCase().includes(texto) || peca.codigo.toLowerCase().includes(texto);
+    
+        return passaCategoria && passaBusca;
     });
     renderizarPecas(filtradas);
+}
+
+filtroCategoria.addEventListener('change', () => {
+    aplicarFiltros();
+});
+
+buscaBtn.addEventListener('click', () => {
+    aplicarFiltros();
 });
 
 carregarPecas();
