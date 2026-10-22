@@ -57,7 +57,56 @@
 
     <dialog id="modal-peca">
         <h2>Nova peça</h2>
-        <button type="button" id="fechar-modal"><i class="fa-solid fa-xmark" aria-label="Fechar"></i></button>
+    
+        <form action="" id="form-peca">
+            <div class="campo">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="">Escolha uma categoria</option>
+                    <option value="blusa">Blusa</option>
+                    <option value="vestido">Vestido</option>
+                    <option value="calca">Calça</option>
+                    <option value="acessorio">Acessório</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="nome">Nome da peça</label>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+
+            <div class="campo">
+                <label for="cor">Cor</label>
+                <input type="text" name="cor" id="cor" required>
+            </div>
+
+            <div class="campo">
+                <label for="codigo">Código</label>
+                <input type="text" name="codigo" id="codigo" required>
+            </div>
+
+            <div class="campo">
+                <label for="custo">Preço de custo</label>
+                <input type="number" name="custo" id="custo" min="0" step="0.01" required>
+            </div>
+
+            <div class="campo">
+                <label for="venda">Valor de venda</label>
+                <input type="number" name="venda" id="venda" min="0" step="0.01" required>
+            </div>
+
+            <div class="campo">
+                <label for="fornecedor">Fornecedor</label>
+                <input type="text" name="fornecedor" id="fornecedor" required>
+            </div>
+
+            <div class="campo">
+                <label for="data-chegada">Data de chegada</label>
+                <input type="date" name="data-chegada" id="data-chegada" required>
+            </div>
+
+            <button type="button" id="fechar-modal"  aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </form>
     </dialog>
 
     <script src="js/global.js"></script>
