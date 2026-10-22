@@ -83,8 +83,7 @@
 .acoes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 0.8rem;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
