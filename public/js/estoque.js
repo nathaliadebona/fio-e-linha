@@ -164,6 +164,7 @@ categoriaSelect.addEventListener('change', () => {
 
         input.addEventListener('change', () => {
             quantidade.hidden = !input.checked;
+            quantidade.required = input.checked;
         });
 
         const quantidade = document.createElement('input');
@@ -182,6 +183,23 @@ categoriaSelect.addEventListener('change', () => {
 formPeca.addEventListener('submit', (event) => {
     event.preventDefault();
     
+    const tamanhos = {};
+    const rotulos = listaTamanhos.querySelectorAll('label');
+
+    rotulos.forEach((rotulo) => {
+        const caixa = rotulo.querySelector('input[type="checkbox"]');
+        const campoQtd = rotulo.querySelector('input[type="number"]');
+
+        if (caixa.checked) {
+            tamanhos[caixa.value] = Number(campoQtd.value);
+        }
+    });
+
+    if (Object.keys(tamanhos).length === 0) {
+        console.log('Marque pelo menos um tamanho');
+        return;
+    }
+
     const novaPeca = {
         categoria: categoria.value,
         nome: nome.value,
@@ -190,7 +208,8 @@ formPeca.addEventListener('submit', (event) => {
         custo: Number(custo.value),
         venda: Number(venda.value),
         fornecedor: fornecedor.value,
-        dataChegada: dataChegada.value
+        dataChegada: dataChegada.value,
+        tamanhos
     };
 
     console.log(novaPeca);
