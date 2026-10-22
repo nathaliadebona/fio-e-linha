@@ -19,6 +19,7 @@ async function carregarPecas() {
 
     todasAsPecas = pecas;
 
+    atualizarAlerta();
     renderizarPecas(pecas);
 }
 
@@ -93,12 +94,6 @@ function renderizarPecas(lista) {
 
             etiquetas.appendChild(etiqueta);
         });
-
-        const estoqueBaixo = Object.values(peca.tamanhos).some((quantidade) => quantidade <= 3);
-        
-        if (estoqueBaixo) {
-            alertaEstoque.classList.add('visivel');
-        }
     });
 }
 
@@ -113,6 +108,16 @@ function aplicarFiltros() {
         return passaCategoria && passaBusca;
     });
     renderizarPecas(filtradas);
+}
+
+function atualizarAlerta() {
+    const algumBaixo = todasAsPecas.some((peca) => {
+        return Object.values(peca.tamanhos).some((quantidade) => quantidade <= 3);
+    });
+
+    if (algumBaixo) {
+        alertaEstoque.classList.add('visivel');
+    }
 }
 
 filtroCategoria.addEventListener('change', () => {
