@@ -156,3 +156,21 @@
     cursor: pointer;
 }
 
+#lista-tamanhos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+#lista-tamanhos label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#lista-tamanhos input[type="number"] {
+    width: 5rem;
+    margin-left: auto;
+}
+
