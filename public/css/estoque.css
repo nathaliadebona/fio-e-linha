@@ -197,3 +197,11 @@
     font-weight: 600;
 }
 
+#erro-tamanhos {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-erro);
+}
+
