@@ -156,6 +156,12 @@
     cursor: pointer;
 }
 
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
 #lista-tamanhos {
     display: flex;
     flex-direction: column;
