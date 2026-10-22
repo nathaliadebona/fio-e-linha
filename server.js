@@ -51,5 +51,10 @@ app.get('/api/pecas', verificarToken, (req, res) => {
     res.json(pecas);
 });
 
+app.post('/api/pecas', verificarToken, (req, res) => {
+    console.log(req.body);
+    res.json({ ok: true });
+});
+
 app.listen(3000);
 

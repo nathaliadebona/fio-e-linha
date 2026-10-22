@@ -180,7 +180,7 @@ categoriaSelect.addEventListener('change', () => {
     });
 });
 
-formPeca.addEventListener('submit', (event) => {
+formPeca.addEventListener('submit', async (event) => {
     event.preventDefault();
     
     const tamanhos = {};
@@ -212,7 +212,14 @@ formPeca.addEventListener('submit', (event) => {
         tamanhos
     };
 
-    console.log(novaPeca);
+    await fetch('/api/pecas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', 
+            Authorization: token
+        },
+        body: JSON.stringify(novaPeca)
+    });
 });
 
 carregarPecas();
