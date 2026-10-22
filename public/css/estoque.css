@@ -62,10 +62,24 @@
     background-color: var(--cor-fundo-alt);
 }
 
+.cabecalho-peca {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nome-peca {
+    font-family: var(--fonte-titulos);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
 .etiquetas {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .etiqueta {
@@ -78,6 +92,11 @@
 .etiqueta.baixo {
     font-weight: 600;
     background-color: var(--cor-baixo-estoque);
+}
+
+.preco-peca {
+    font-weight: 700;
+    color: var(--cor-detalhes);
 }
 
 .acoes {

@@ -15,17 +15,22 @@ async function carregarPecas() {
     pecas.forEach((peca) => {
         const item = document.createElement('li');
 
+        const cabecalho = document.createElement('div');
+        cabecalho.classList.add('cabecalho-peca');
+
         const icone = document.createElement('i');
         icone.classList.add('fa-solid', icones[peca.categoria]);
         icone.setAttribute('aria-hidden', 'true');
 
         const titulo = document.createElement('p');
+        titulo.classList.add('nome-peca');
         titulo.textContent = `${peca.nome} (${peca.codigo})`;
         
         const etiquetas = document.createElement('div');
         etiquetas.classList.add('etiquetas');
 
         const preco = document.createElement('p');
+        preco.classList.add('preco-peca')
         preco.textContent = peca.venda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         
         const acoes = document.createElement('div');
@@ -57,8 +62,9 @@ async function carregarPecas() {
         acoes.appendChild(btnExcluir);
 
         listaPecas.appendChild(item);
-        item.appendChild(icone);
-        item.appendChild(titulo);
+        cabecalho.appendChild(icone);
+        cabecalho.appendChild(titulo);
+        item.appendChild(cabecalho);
         item.appendChild(etiquetas);
         item.appendChild(preco);
         item.appendChild(acoes);
