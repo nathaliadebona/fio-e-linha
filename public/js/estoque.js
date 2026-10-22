@@ -2,6 +2,10 @@ const listaPecas = document.getElementById('lista-pecas');
 const filtroCategoria = document.getElementById('filtro-categoria');
 const campoBusca = document.getElementById('busca');
 const buscaBtn = document.getElementById('busca-btn');
+const novaPecaBtn = document.getElementById('nova-peca-btn');
+const modalPeca = document.getElementById('modal-peca');
+const fecharModalBtn = document.getElementById('fechar-modal');
+
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
 const icones = {
@@ -126,6 +130,14 @@ filtroCategoria.addEventListener('change', () => {
 
 buscaBtn.addEventListener('click', () => {
     aplicarFiltros();
+});
+
+novaPecaBtn.addEventListener('click', () => {
+    modalPeca.showModal();
+});
+
+fecharModalBtn.addEventListener('click', () => {
+    modalPeca.close();
 });
 
 carregarPecas();
