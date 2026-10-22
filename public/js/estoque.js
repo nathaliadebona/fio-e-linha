@@ -95,6 +95,8 @@ function renderizarPecas(lista) {
                 method: 'DELETE',
                 headers: { Authorization: token }
             });
+
+            await carregarPecas();
         });
 
         btnExcluir.appendChild(iconeExcluir);
@@ -145,6 +147,8 @@ function atualizarAlerta() {
 
     if (algumBaixo) {
         alertaEstoque.classList.add('visivel');
+    } else {
+        alertaEstoque.classList.remove('visivel');
     }
 }
 
