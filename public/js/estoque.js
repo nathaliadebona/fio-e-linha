@@ -220,6 +220,9 @@ formPeca.addEventListener('submit', async (event) => {
         },
         body: JSON.stringify(novaPeca)
     });
+
+    modalPeca.close();
+    formPeca.reset();
 });
 
 carregarPecas();

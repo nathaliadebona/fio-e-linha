@@ -1,6 +1,7 @@
 const express = require('express');
 const usuarios = require('./data/usuarios.json');
 const pecas = require('./data/pecas.json');
+const fs = require('fs');
 const app = express();
 const sessoes = {};
 
@@ -52,7 +53,12 @@ app.get('/api/pecas', verificarToken, (req, res) => {
 });
 
 app.post('/api/pecas', verificarToken, (req, res) => {
-    console.log(req.body);
+    const novaPeca = req.body;
+    novaPeca.id = Math.max(...pecas.map((p) => p.id)) + 1;
+    pecas.push(novaPeca);
+
+    fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
+
     res.json({ ok: true });
 });
 
