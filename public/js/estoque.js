@@ -33,15 +33,24 @@ async function carregarPecas() {
 
         const btnDetalhes = document.createElement('button');
         btnDetalhes.type = 'button';
+        btnDetalhes.classList.add('btn-secundario');
         btnDetalhes.textContent = 'Detalhes';
 
         const btnEditar = document.createElement('button');
         btnEditar.type = 'button';
+        btnEditar.classList.add('btn-secundario');
         btnEditar.textContent = 'Editar';
 
         const btnExcluir = document.createElement('button');
         btnExcluir.type = 'button';
-        btnExcluir.textContent = 'Excluir';
+        btnExcluir.setAttribute('aria-label', 'Excluir peça');
+        btnExcluir.classList.add('btn-secundario', 'btn-excluir');
+        
+        const iconeExcluir = document.createElement('i');
+        iconeExcluir.classList.add('fa-solid', 'fa-trash');
+        iconeExcluir.setAttribute('aria-hidden', 'true');
+
+        btnExcluir.appendChild(iconeExcluir);
 
         acoes.appendChild(btnDetalhes);
         acoes.appendChild(btnEditar);

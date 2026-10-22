@@ -66,6 +66,21 @@ label {
     transition: background-color 0.3s ease;
 }
 
+.btn-secundario {
+    padding: 0.5rem;
+    border: 0.063rem solid var(--cor-acoes);
+    font-size: 1rem;
+    color: var(--cor-acoes);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-excluir {
+    border-color: var(--cor-erro);
+    color: var(--cor-erro);
+}
+
 nav {
     position: fixed;
     bottom: 0;

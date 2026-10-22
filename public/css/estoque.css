@@ -79,3 +79,12 @@
     font-weight: 600;
     background-color: var(--cor-baixo-estoque);
 }
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem;
+}
+
