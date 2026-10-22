@@ -9,6 +9,7 @@ const formPeca = document.getElementById('form-peca');
 const categoriaSelect = document.getElementById('categoria');
 const listaTamanhos = document.getElementById('lista-tamanhos');
 const dataChegada = document.getElementById('data-chegada');
+const erroTamanhos = document.getElementById('erro-tamanhos');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
@@ -213,7 +214,7 @@ formPeca.addEventListener('submit', async (event) => {
     });
 
     if (Object.keys(tamanhos).length === 0) {
-        console.log('Marque pelo menos um tamanho');
+        erroTamanhos.hidden = false;
         return;
     }
 
