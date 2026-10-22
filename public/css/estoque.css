@@ -111,3 +111,18 @@
     padding: 1rem 0;
 }
 
+#modal-peca {
+    width: 90%;
+    max-width: 30rem;
+    margin: auto;
+    padding: 1rem;
+    border: none;
+    color: var(--cor-texto);
+    border-radius: 1rem;
+    background-color: var(--cor-fundo);
+}
+
+#modal-peca::backdrop {
+    background-color: rgba(59, 47, 42, 0.5);
+}
+
