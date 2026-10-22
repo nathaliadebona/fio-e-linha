@@ -174,3 +174,9 @@
     margin-left: auto;
 }
 
+#lista-tamanhos input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--cor-acoes);
+}
+
