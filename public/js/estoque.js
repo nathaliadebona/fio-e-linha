@@ -79,8 +79,32 @@ function renderizarPecas(lista) {
 
         btnEditar.addEventListener('click', () => {
             pecaEditandoId = peca.id;
+
             document.querySelector('#modal-peca h2').textContent = 'Editar peça';
+            
             nome.value = peca.nome;
+            cor.value = peca.cor;
+            codigo.value = peca.codigo;
+            custo.value = peca.custo;
+            venda.value = peca.venda;
+            fornecedor.value = peca.fornecedor;
+            dataChegada.value = peca.dataChegada;
+            categoriaSelect.value = peca.categoria;
+
+            categoriaSelect.dispatchEvent(new Event('change'));
+
+            const rotulos = listaTamanhos.querySelectorAll('label');
+            rotulos.forEach((rotulo) => {
+                const caixa = rotulo.querySelector('input[type="checkbox"]');
+                const campoQtd = rotulo.querySelector('input[type="number"]');
+
+                if (peca.tamanhos[caixa.value] !== undefined) {
+                    caixa.checked = true;
+                    caixa.dispatchEvent(new Event('change'));
+                    campoQtd.value = peca.tamanhos[caixa.value];
+                }
+            });
+
             modalPeca.showModal();
         });
 
