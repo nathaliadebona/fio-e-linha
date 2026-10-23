@@ -28,6 +28,7 @@ const tamanhosPorCategoria = {
 };
 
 let todasAsPecas = [];
+let pecaEditandoId = null;
 
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
@@ -75,6 +76,13 @@ function renderizarPecas(lista) {
         btnEditar.type = 'button';
         btnEditar.classList.add('btn-secundario');
         btnEditar.textContent = 'Editar';
+
+        btnEditar.addEventListener('click', () => {
+            pecaEditandoId = peca.id;
+            document.querySelector('#modal-peca h2').textContent = 'Editar peça';
+            nome.value = peca.nome;
+            modalPeca.showModal();
+        });
 
         const btnExcluir = document.createElement('button');
         btnExcluir.type = 'button';
@@ -163,6 +171,12 @@ buscaBtn.addEventListener('click', () => {
 
 novaPecaBtn.addEventListener('click', () => {
     erroTamanhos.hidden = true;
+
+    pecaEditandoId = null;
+    document.querySelector('#modal-peca h2').textContent = 'Nova peça';
+    formPeca.reset();
+    listaTamanhos.replaceChildren();
+
     modalPeca.showModal();
 });
 
