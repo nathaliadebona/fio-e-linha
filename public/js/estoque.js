@@ -10,6 +10,9 @@ const categoriaSelect = document.getElementById('categoria');
 const listaTamanhos = document.getElementById('lista-tamanhos');
 const dataChegada = document.getElementById('data-chegada');
 const erroTamanhos = document.getElementById('erro-tamanhos');
+const modalDetalhes = document.getElementById('modal-detalhes');
+const fecharDetalhesBtn = document.getElementById('fechar-detalhes');
+const detalhesTitulo = document.getElementById('detalhes-titulo');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
@@ -71,6 +74,25 @@ function renderizarPecas(lista) {
         btnDetalhes.type = 'button';
         btnDetalhes.classList.add('btn-secundario');
         btnDetalhes.textContent = 'Detalhes';
+
+        btnDetalhes.addEventListener('click', () => {
+            detalhesTitulo.textContent = peca.nome;
+
+            const detalheCor = document.getElementById('detalhe-cor');
+            detalheCor.textContent = peca.cor;
+
+            const detalheCusto = document.getElementById('detalhe-custo');
+            detalheCusto.textContent = peca.custo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const detalheFornecedor = document.getElementById('detalhe-fornecedor');
+            detalheFornecedor.textContent = peca.fornecedor;
+
+            const detalheData = document.getElementById('detalhe-data');
+            const [ano, mes, dia] = peca.dataChegada.split('-');
+            detalheData.textContent = `${dia}/${mes}/${ano}`;
+
+            modalDetalhes.showModal();
+        });
 
         const btnEditar = document.createElement('button');
         btnEditar.type = 'button';
@@ -287,6 +309,10 @@ formPeca.addEventListener('submit', async (event) => {
     await carregarPecas();
     modalPeca.close();
     formPeca.reset();
+});
+
+fecharDetalhesBtn.addEventListener('click', () => {
+    modalDetalhes.close();
 });
 
 carregarPecas();
