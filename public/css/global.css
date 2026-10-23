@@ -118,6 +118,23 @@ nav i {
     font-size: 1.1rem;
 }
 
+@media (min-width: 48rem) {
+    nav {
+        top: 0;
+        width: 12rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    nav + main {
+        margin-left: 12rem;
+        padding-bottom: 1.5rem 1rem 1.5rem;
+    }
+}
+
 @media (hover: hover) {
     .btn-primario:hover {
         background-color: var(--cor-acoes-hover);
