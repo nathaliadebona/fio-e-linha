@@ -252,6 +252,10 @@
 }
 
 @media (min-width: 48rem) {
+    
+}
+
+@media (min-width: 60rem) {
     #lista-pecas li {
         display: grid;
         grid-template-columns: 2fr 2fr 1fr auto;
