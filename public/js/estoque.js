@@ -61,10 +61,20 @@ function renderizarPecas(lista) {
         icone.classList.add('fa-solid', icones[peca.categoria]);
         icone.setAttribute('aria-hidden', 'true');
 
+        const textoPeca = document.createElement('div');
+        textoPeca.classList.add('texto-peca');
+
         const titulo = document.createElement('p');
         titulo.classList.add('nome-peca');
-        titulo.textContent = `${peca.nome} (${peca.codigo})`;
+        titulo.textContent = peca.nome;
+
+        const codigoPeca = document.createElement('p');
+        codigoPeca.classList.add('codigo-peca');
+        codigoPeca.textContent = peca.codigo;
         
+        textoPeca.appendChild(titulo);
+        textoPeca.appendChild(codigoPeca);
+
         const etiquetas = document.createElement('div');
         etiquetas.classList.add('etiquetas');
 
@@ -146,7 +156,7 @@ function renderizarPecas(lista) {
 
         btnExcluir.addEventListener('click', async () => {
             pecaExcluindo = peca;
-            excluirTexto.textContent = `Você vai excluir "${peca.nome}`;
+            excluirTexto.textContent = `Você vai excluir "${peca.nome}"`;
             modalExcluir.showModal();
         });
 
@@ -158,7 +168,7 @@ function renderizarPecas(lista) {
 
         listaPecas.appendChild(item);
         cabecalho.appendChild(icone);
-        cabecalho.appendChild(titulo);
+        cabecalho.appendChild(textoPeca);
         item.appendChild(cabecalho);
         item.appendChild(etiquetas);
         item.appendChild(preco);

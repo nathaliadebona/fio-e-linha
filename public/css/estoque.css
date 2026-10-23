@@ -79,6 +79,11 @@
     font-weight: 600;
 }
 
+.codigo-peca {
+    font-size: 0.8rem;
+    color: var(--cor-detalhes);
+}
+
 .etiquetas {
     display: flex;
     flex-wrap: wrap;
@@ -246,3 +251,32 @@
     flex: 1;
 }
 
+@media (min-width: 48rem) {
+    #lista-pecas li {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr auto;
+        align-items: center;
+        padding: 0.5rem 1rem;
+    }
+
+    .cabecalho-peca {
+        margin-bottom: 0;
+    }
+
+    .etiquetas {
+        margin-top: 0;
+    }
+
+    .etiqueta {
+        padding: 0.1rem 1rem;
+        line-height: 1.2;
+    }
+
+    .acoes {
+        padding: 0;
+    }
+
+    .nome-peca {
+        font-size: 1rem;
+    }
+}
