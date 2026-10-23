@@ -211,10 +211,20 @@
 #modal-detalhes dl {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1rem;
 }
 
 #modal-detalhes dt {
     font-weight: 600;
+}
+
+#modal-detalhes dt, 
+#modal-detalhes dd {
+    padding: 1rem 0.5rem;
+    border-bottom: 0.063rem solid var(--cor-detalhes);
+}
+
+#modal-detalhes dt:last-of-type, 
+#modal-detalhes dd:last-of-type {
+    border-bottom: none;
 }
 
