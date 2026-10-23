@@ -13,6 +13,10 @@ const erroTamanhos = document.getElementById('erro-tamanhos');
 const modalDetalhes = document.getElementById('modal-detalhes');
 const fecharDetalhesBtn = document.getElementById('fechar-detalhes');
 const detalhesTitulo = document.getElementById('detalhes-titulo');
+const modalExcluir = document.getElementById('modal-excluir');
+const excluirTexto = document.getElementById('excluir-texto');
+const cancelarExcluirBtn = document.getElementById('cancelar-excluir');
+const confirmarExcluirBtn = document.getElementById('confirmar-excluir');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 
@@ -32,6 +36,7 @@ const tamanhosPorCategoria = {
 
 let todasAsPecas = [];
 let pecaEditandoId = null;
+let pecaExcluindo = null;
 
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
@@ -140,18 +145,9 @@ function renderizarPecas(lista) {
         iconeExcluir.setAttribute('aria-hidden', 'true');
 
         btnExcluir.addEventListener('click', async () => {
-            const confirmou = confirm(`Excluir ${peca.nome}?`);
-            
-            if (!confirmou) {
-                return;
-            }
-
-            await fetch(`/api/pecas/${peca.id}`, {
-                method: 'DELETE',
-                headers: { Authorization: token }
-            });
-
-            await carregarPecas();
+            pecaExcluindo = peca;
+            excluirTexto.textContent = `Você vai excluir "${peca.nome}`;
+            modalExcluir.showModal();
         });
 
         btnExcluir.appendChild(iconeExcluir);
@@ -313,6 +309,21 @@ formPeca.addEventListener('submit', async (event) => {
 
 fecharDetalhesBtn.addEventListener('click', () => {
     modalDetalhes.close();
+});
+
+cancelarExcluirBtn.addEventListener('click', () => {
+    modalExcluir.close();
+});
+
+confirmarExcluirBtn.addEventListener('click', async () => {
+    await fetch(`/api/pecas/${pecaExcluindo.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: token }
+    });
+
+    await carregarPecas();
+    modalExcluir.close();
+    pecaExcluindo = null;
 });
 
 carregarPecas();

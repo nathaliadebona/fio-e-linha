@@ -46,23 +46,5 @@
       "38": 2,
       "40": 3
     }
-  },
-  {
-    "categoria": "calca",
-    "nome": "Calça Alfaiataria Teste",
-    "cor": "Preto",
-    "codigo": "CA-002",
-    "custo": 49.9,
-    "venda": 89.9,
-    "fornecedor": "Teste",
-    "dataChegada": "2026-10-01",
-    "tamanhos": {
-      "36": 5,
-      "38": 5,
-      "40": 5,
-      "42": 5,
-      "44": 5
-    },
-    "id": 4
   }
 ]
