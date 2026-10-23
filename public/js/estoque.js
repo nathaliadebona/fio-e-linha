@@ -271,8 +271,12 @@ formPeca.addEventListener('submit', async (event) => {
         tamanhos
     };
 
-    await fetch('/api/pecas', {
-        method: 'POST',
+    const editando = pecaEditandoId !== null;
+    const url = editando ? `/api/pecas/${pecaEditandoId}` : '/api/pecas';
+    const metodo = editando ? 'PUT' : 'POST';
+
+    await fetch(url, {
+        method: metodo,
         headers: {
             'Content-Type': 'application/json', 
             Authorization: token
