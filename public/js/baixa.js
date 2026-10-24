@@ -17,6 +17,7 @@ const checkoutErro = document.getElementById('checkout-erro');
 const checkoutSucesso = document.getElementById('checkout-sucesso');
 const checkoutFalha = document.getElementById('checkout-falha');
 const checkoutContador = document.getElementById('checkout-contador');
+const irCheckout = document.getElementById('ir-checkout');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
@@ -170,6 +171,9 @@ function renderizarCheckout() {
     const totalItens = checkout.reduce((soma, linha) => soma + linha.quantidade, 0);
     checkoutItens.textContent = totalItens;
     checkoutContador.textContent = totalItens;
+
+    const palavra = totalItens === 1 ? 'item' : 'itens';
+    irCheckout.setAttribute('aria-label', `Ir para o checkout, ${totalItens} ${palavra}`);
 
     const total = checkout.reduce((soma, linha) => soma + linha.preco * linha.quantidade, 0);
     checkoutTotal.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
