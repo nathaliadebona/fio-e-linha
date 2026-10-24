@@ -14,6 +14,7 @@ const checkoutItens = document.getElementById('checkout-itens');
 const checkoutTotal = document.getElementById('checkout-total');
 const darBaixaBtn = document.getElementById('dar-baixa-btn');
 const checkoutErro = document.getElementById('checkout-erro');
+const checkoutSucesso = document.getElementById('checkout-sucesso');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
@@ -116,6 +117,7 @@ function aplicarFiltros() {
 
 function renderizarCheckout() {
     checkoutErro.hidden = true;
+    checkoutSucesso.hidden = true;
 
     checkoutLista.replaceChildren();
 
@@ -222,6 +224,7 @@ darBaixaBtn.addEventListener('click', async () => {
     if (resposta.ok) {
         checkout = [];
         renderizarCheckout();
+        checkoutSucesso.hidden = false;
         await carregarPecas();
     }
 });
