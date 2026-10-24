@@ -46,6 +46,29 @@
         <ul id="resultados"></ul>
     </main>
 
+    <dialog id="modal-item">
+        <h2 id="item-titulo"></h2>
+
+        <form action="" id="form-item">
+            <div class="campo">
+                <label for="item-tamanho">Tamanho</label>
+                <select name="item-tamanho" id="item-tamanho" required></select>
+            </div>
+
+            <div class="campo">
+                <label for="item-quantidade">Quantidade</label>
+                <input type="number" name="item-quantidade" id="item-quantidade" min="1" required>
+            </div>
+
+            <p id="item-erro" role="alert" hidden></p>
+
+            <div class="acoes-modal">
+                <button type="button" id="cancelar-item" class="btn-secundario">Cancelar</button>
+                <button type="submit" class="btn-primario">Adicionar</button>
+            </div>
+        </form>
+    </dialog>
+
     <script src="js/global.js"></script>
     <script src="js/baixa.js"></script>
 </body>

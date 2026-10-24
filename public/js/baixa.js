@@ -2,8 +2,13 @@ const listaResultados = document.getElementById('resultados');
 const filtroCategoria = document.getElementById('filtro-categoria');
 const campoBusca = document.getElementById('busca');
 const buscaBtn = document.getElementById('busca-btn');
+const modalItem = document.getElementById('modal-item');
+const itemTitulo = document.getElementById('item-titulo');
+const cancelarItemBtn = document.getElementById('cancelar-item');
+const itemTamanho = document.getElementById('item-tamanho');
 
 let todasAsPecas = [];
+let checkboxAtual = null;
 
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
@@ -19,6 +24,30 @@ function renderizarResultados(lista) {
 
     lista.forEach((peca) => {
         const item = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.setAttribute('aria-label', `Selecionar ${peca.nome}`);
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                itemTitulo.textContent = peca.nome;
+                
+                checkboxAtual = checkbox;
+
+                itemTamanho.replaceChildren();
+
+                Object.entries(peca.tamanhos).forEach(([tamanho, quantidade]) => {
+                    const opcao = document.createElement('option');
+                    opcao.value = tamanho;
+                    opcao.textContent = `${tamanho} (${quantidade} em estoque)`;
+                    opcao.disabled = quantidade === 0;
+                    itemTamanho.appendChild(opcao);
+                });
+
+                modalItem.showModal();
+            }
+        });
 
         const nomePeca = document.createElement('p');
         nomePeca.classList.add('nome-peca');
@@ -44,6 +73,7 @@ function renderizarResultados(lista) {
         });
 
         listaResultados.appendChild(item);
+        item.appendChild(checkbox);
         item.appendChild(nomePeca);
         item.appendChild(corPeca);
         item.appendChild(etiquetas);
@@ -69,6 +99,17 @@ filtroCategoria.addEventListener('change', () => {
 
 buscaBtn.addEventListener('click', () => {
     aplicarFiltros();
+});
+
+cancelarItemBtn.addEventListener('click', () => {
+    modalItem.close();
+});
+
+modalItem.addEventListener('close', () => {
+    if (checkboxAtual) {
+        checkboxAtual.checked = false;
+        checkboxAtual = null;
+    }
 });
 
 carregarPecas();
