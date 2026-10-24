@@ -147,6 +147,10 @@
     color: var(--cor-erro);
 }
 
+.etiqueta.zerado {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
 
 @media (min-width: 48rem) {
     main {
