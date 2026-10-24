@@ -204,13 +204,20 @@ formItem.addEventListener('submit', (event) => {
     modalItem.close();
 });
 
-darBaixaBtn.addEventListener('click', () => {
+darBaixaBtn.addEventListener('click', async () => {
     if (checkout.length === 0) {
         checkoutErro.hidden = false;
         return;
     }
 
-    console.log('dar baixa');
+    await fetch('/api/baixa', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token
+        },
+        body: JSON.stringify({ itens: checkout })
+    });
 });
 
 carregarPecas();

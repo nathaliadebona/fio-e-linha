@@ -89,5 +89,10 @@ app.put('/api/pecas/:id', verificarToken, (req, res) => {
     res.json({ ok: true });
 });
 
+app.post('/api/baixa', verificarToken, (req, res) => {
+    console.log(req.body);
+    res.json({ ok: true });
+});
+
 app.listen(3000);
 
