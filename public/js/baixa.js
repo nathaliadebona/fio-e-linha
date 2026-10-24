@@ -19,8 +19,34 @@ function renderizarResultados(lista) {
 
     lista.forEach((peca) => {
         const item = document.createElement('li');
-        item.textContent = `${peca.nome} (${peca.codigo}) - ${peca.cor}`;
+
+        const nomePeca = document.createElement('p');
+        nomePeca.classList.add('nome-peca');
+        nomePeca.textContent = `${peca.nome} (${peca.codigo})`;
+
+        const corPeca = document.createElement('p');
+        corPeca.classList.add('cor-peca');
+        corPeca.textContent = peca.cor;
+
+        const etiquetas = document.createElement('div');
+        etiquetas.classList.add('etiquetas');
+
+        Object.entries(peca.tamanhos).forEach(([tamanho, quantidade]) => {
+            const etiqueta = document.createElement('span');
+            etiqueta.classList.add('etiqueta');
+            etiqueta.textContent = `${tamanho} ${quantidade}`;
+
+            if (quantidade === 0) {
+                etiqueta.classList.add('zerado');
+            }
+
+            etiquetas.appendChild(etiqueta);
+        });
+
         listaResultados.appendChild(item);
+        item.appendChild(nomePeca);
+        item.appendChild(corPeca);
+        item.appendChild(etiquetas);
     });
 }
 
