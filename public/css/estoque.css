@@ -57,39 +57,6 @@
     padding: 1rem 0;
 }
 
-#modal-peca, 
-#modal-detalhes,
-#modal-excluir,
-#modal-baixo {
-    width: 90%;
-    max-width: 30rem;
-    margin: auto;
-    padding: 1rem;
-    border: none;
-    overflow: hidden;
-    color: var(--cor-texto);
-    border-radius: 1rem;
-    background-color: var(--cor-fundo); 
-}
-
-#modal-peca::backdrop,
-#modal-detalhes::backdrop,
-#modal-excluir::backdrop,
-#modal-baixo::backdrop {
-    background-color: rgba(59, 47, 42, 0.5);
-}
-
-#modal-peca h2,
-#modal-detalhes h2,
-#modal-excluir h2,
-#modal-baixo h2 {
-    margin-bottom: 1.5rem;
-    font-family: var(--fonte-titulos);
-    font-size: 1.6rem;
-    text-align: center;
-    color: var(--cor-detalhes);
-}
-
 #form-peca {
     display: flex;
     flex-direction: column;
@@ -111,12 +78,6 @@
     color: var(--cor-texto);
     background-color: transparent;
     cursor: pointer;
-}
-
-.campo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
 }
 
 #lista-tamanhos {
@@ -185,15 +146,6 @@
 #excluir-texto {
     margin-bottom: 1.5rem;
     text-align: center;
-}
-
-.acoes-modal {
-    display: flex;
-    gap: 1rem;
-}
-
-.acoes-modal button {
-    flex: 1;
 }
 
 #lista-baixo {

@@ -180,6 +180,58 @@ nav i {
     background-color: var(--cor-baixo-estoque);
 }
 
+
+#modal-peca, 
+#modal-detalhes,
+#modal-excluir,
+#modal-baixo,
+#modal-item {
+    width: 90%;
+    max-width: 30rem;
+    margin: auto;
+    padding: 1rem;
+    border: none;
+    overflow: hidden;
+    color: var(--cor-texto);
+    border-radius: 1rem;
+    background-color: var(--cor-fundo); 
+}
+
+#modal-peca::backdrop,
+#modal-detalhes::backdrop,
+#modal-excluir::backdrop,
+#modal-baixo::backdrop
+#modal-item::backdrop {
+    background-color: rgba(59, 47, 42, 0.5);
+}
+
+#modal-peca h2,
+#modal-detalhes h2,
+#modal-excluir h2,
+#modal-baixo h2,
+#modal-item h2 {
+    margin-bottom: 1.5rem;
+    font-family: var(--fonte-titulos);
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--cor-detalhes);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.acoes-modal {
+    display: flex;
+    gap: 1rem;
+}
+
+.acoes-modal button {
+    flex: 1;
+}
+
 @media (min-width: 48rem) {
     nav {
         top: 0;
