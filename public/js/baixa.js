@@ -51,6 +51,10 @@ function renderizarResultados(lista) {
 
                 pecaAtual = peca;
 
+                itemErro.hidden = true;
+
+                itemQuantidade.value = '';
+
                 modalItem.showModal();
             }
         });
