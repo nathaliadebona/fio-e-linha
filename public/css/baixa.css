@@ -123,6 +123,23 @@
     margin-top: 1rem;
 }
 
+#checkout-erro, 
+#checkout-falha {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--cor-fundo);
+    background-color: var(--cor-erro);
+}
+
+#checkout-sucesso {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--cor-fundo);
+    background-color: var(--cor-detalhes);
+}
+
 
 @media (min-width: 48rem) {
 

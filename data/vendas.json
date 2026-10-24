@@ -23,5 +23,37 @@
         "devolvida": 0
       }
     ]
+  },
+  {
+    "id": 2,
+    "usuario": "equipe",
+    "data": "2026-10-24T21:28:26.609Z",
+    "itens": [
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "preco": 89.9,
+        "tamanho": "36",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "usuario": "equipe",
+    "data": "2026-10-24T21:28:42.977Z",
+    "itens": [
+      {
+        "codigo": "VE-001",
+        "nome": "Vestido Midi Floral",
+        "cor": "Rosa",
+        "preco": 99.9,
+        "tamanho": "P",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]
