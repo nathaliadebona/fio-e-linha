@@ -86,10 +86,15 @@ function renderizarResultados(lista) {
             etiquetas.appendChild(etiqueta);
         });
 
+        const preco = document.createElement('p');
+        preco.classList.add('preco-peca');
+        preco.textContent = peca.venda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
         listaResultados.appendChild(item);
         item.appendChild(checkbox);
         item.appendChild(nomePeca);
         item.appendChild(corPeca);
+        item.appendChild(preco);
         item.appendChild(etiquetas);
     });
 }
