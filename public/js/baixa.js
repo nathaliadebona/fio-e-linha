@@ -6,9 +6,13 @@ const modalItem = document.getElementById('modal-item');
 const itemTitulo = document.getElementById('item-titulo');
 const cancelarItemBtn = document.getElementById('cancelar-item');
 const itemTamanho = document.getElementById('item-tamanho');
+const formItem = document.getElementById('form-item');
+const itemQuantidade = document.getElementById('item-quantidade');
+const itemErro = document.getElementById('item-erro');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
+let pecaAtual = null;
 
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
@@ -44,6 +48,8 @@ function renderizarResultados(lista) {
                     opcao.disabled = quantidade === 0;
                     itemTamanho.appendChild(opcao);
                 });
+
+                pecaAtual = peca;
 
                 modalItem.showModal();
             }
@@ -110,6 +116,22 @@ modalItem.addEventListener('close', () => {
         checkboxAtual.checked = false;
         checkboxAtual = null;
     }
+});
+
+formItem.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const tamanho = itemTamanho.value;
+    const quantidade = Number(itemQuantidade.value);
+    const disponivel = pecaAtual.tamanhos[tamanho];
+
+    if (quantidade > disponivel) {
+        itemErro.textContent = `Há apenas ${disponivel} em estoque`
+        itemErro.hidden = false;
+        return;
+    }
+
+    console.log(pecaAtual.nome, tamanho, quantidade);
 });
 
 carregarPecas();
