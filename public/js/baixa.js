@@ -10,6 +10,8 @@ const formItem = document.getElementById('form-item');
 const itemQuantidade = document.getElementById('item-quantidade');
 const itemErro = document.getElementById('item-erro');
 const checkoutLista = document.getElementById('checkout-lista');
+const checkoutItens = document.getElementById('checkout-itens');
+const checkoutTotal = document.getElementById('checkout-total');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
@@ -113,6 +115,9 @@ function renderizarCheckout() {
         item.textContent = `${linha.nome} (${linha.codigo}) - ${linha.tamanho} - ${linha.quantidade}`;
         checkoutLista.appendChild(item);
     });
+
+    const totalItens = checkout.reduce((soma, linha) => soma + linha.quantidade, 0);
+    checkoutItens.textContent = totalItens;
 }
 
 filtroCategoria.addEventListener('change', () => {
