@@ -90,7 +90,21 @@ app.put('/api/pecas/:id', verificarToken, (req, res) => {
 });
 
 app.post('/api/baixa', verificarToken, (req, res) => {
-    console.log(req.body);
+    const itens = req.body.itens;
+    let temProblema = false;
+
+    itens.forEach((item) => {
+        const peca = pecas.find((p) => p.codigo === item.codigo);
+
+        if (!peca || item.quantidade > (peca.tamanhos[item.tamanho] || 0)) {
+            temProblema = true;
+        }
+    });
+
+    if (temProblema) {
+        return res.status(400).json({ ok: false });
+    }
+
     res.json({ ok: true });
 });
 
