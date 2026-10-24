@@ -106,17 +106,26 @@ app.post('/api/baixa', verificarToken, (req, res) => {
         return res.status(400).json({ ok: false });
     }
 
-    itens.forEach((item) => {
-        const peca = pecas.find((p) => p.codigo === item.codigo);
-        peca.tamanhos[item.tamanho] -= item.quantidade;
-    });
-
     const novaVenda = {
         id: vendas.length + 1,
         usuario: sessoes[req.headers.authorization],
         data: new Date().toISOString(),
         itens: []
     };
+
+    itens.forEach((item) => {
+        const peca = pecas.find((p) => p.codigo === item.codigo);
+        peca.tamanhos[item.tamanho] -= item.quantidade;
+        novaVenda.itens.push({
+            codigo: peca.codigo,
+            nome: peca.nome,
+            cor: peca.cor,
+            preco: peca.venda,
+            tamanho: item.tamanho,
+            quantidade: item.quantidade,
+            devolvida: 0
+        });
+    });
 
     vendas.push(novaVenda);
 

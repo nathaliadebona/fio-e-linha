@@ -1,9 +1,8 @@
 [
   {
-    "id": 1,
+    "categoria": "blusa",
     "nome": "Camisa de linho",
     "cor": "Off-white",
-    "categoria": "blusa",
     "codigo": "BL-001",
     "custo": 45,
     "venda": 89.9,
@@ -11,9 +10,10 @@
     "dataChegada": "2026-10-15",
     "tamanhos": {
       "P": 2,
-      "M": 0,
-      "G": 2
-    }
+      "M": 3,
+      "G": 3
+    },
+    "id": 1
   },
   {
     "id": 2,
@@ -41,7 +41,7 @@
     "fornecedor": "Linhas e agulhas",
     "dataChegada": "2026-09-23",
     "tamanhos": {
-      "36": 2,
+      "36": 4,
       "38": 2,
       "40": 3
     },

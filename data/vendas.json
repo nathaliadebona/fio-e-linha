@@ -2,7 +2,26 @@
   {
     "id": 1,
     "usuario": "equipe",
-    "data": "2026-10-24T19:37:33.909Z",
-    "itens": []
+    "data": "2026-10-24T19:46:38.811Z",
+    "itens": [
+      {
+        "codigo": "BL-001",
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "preco": 89.9,
+        "tamanho": "M",
+        "quantidade": 1,
+        "devolvida": 0
+      },
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "preco": 89.9,
+        "tamanho": "36",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]
