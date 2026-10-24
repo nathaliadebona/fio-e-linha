@@ -1,6 +1,6 @@
 const listaResultados = document.getElementById('resultados');
 const filtroCategoria = document.getElementById('filtro-categoria');
-const campoBusca = document.getElementById('campo-busca');
+const campoBusca = document.getElementById('busca');
 const buscaBtn = document.getElementById('busca-btn');
 
 let todasAsPecas = [];
@@ -23,5 +23,26 @@ function renderizarResultados(lista) {
         listaResultados.appendChild(item);
     });
 }
+
+function aplicarFiltros() {
+    const texto = campoBusca.value.toLowerCase().trim();
+
+    const filtradas = todasAsPecas.filter((peca) => {
+        const passaCategoria = filtroCategoria.value === '' || peca.categoria === filtroCategoria.value;
+        const passaBusca = peca.nome.toLowerCase().includes(texto) || peca.codigo.toLowerCase().includes(texto);
+
+        return passaCategoria && passaBusca;
+    });
+
+    renderizarResultados(filtradas);
+}
+
+filtroCategoria.addEventListener('change', () => {
+    aplicarFiltros();
+});
+
+buscaBtn.addEventListener('click', () => {
+    aplicarFiltros();
+});
 
 carregarPecas();
