@@ -163,4 +163,8 @@
     #checkout {
         margin-top: 0;
     }
+
+    .btn-flutuante {
+        display: none;
+    }
 }
