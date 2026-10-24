@@ -149,5 +149,18 @@
 
 
 @media (min-width: 48rem) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 22rem;
+        gap: 1.5rem;
+    }
 
+    h1,
+    .barra-busca {
+        grid-column: 1 / -1;
+    }
+
+    #checkout {
+        margin-top: 0;
+    }
 }
