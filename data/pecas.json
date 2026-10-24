@@ -16,10 +16,9 @@
     "id": 1
   },
   {
-    "id": 2,
+    "categoria": "vestido",
     "nome": "Vestido Midi Floral",
     "cor": "Rosa",
-    "categoria": "vestido",
     "codigo": "VE-001",
     "custo": 50,
     "venda": 99.9,
@@ -27,9 +26,10 @@
     "dataChegada": "2026-08-10",
     "tamanhos": {
       "P": 4,
-      "M": 3,
+      "M": 6,
       "G": 5
-    }
+    },
+    "id": 2
   },
   {
     "categoria": "calca",

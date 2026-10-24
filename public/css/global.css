@@ -149,6 +149,37 @@ nav i {
     cursor: pointer;
 }
 
+.nome-peca {
+    font-family: var(--fonte-titulos);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.preco-peca {
+    font-weight: 700;
+    color: var(--cor-detalhes);
+}
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.etiqueta {
+    padding: 0.2rem 1rem;
+    color: var(--cor-texto);
+    border-radius: 1rem;
+    background-color: var(--cor-fundo);
+}
+
+.etiqueta.baixo {
+    font-weight: 600;
+    background-color: var(--cor-baixo-estoque);
+}
+
 @media (min-width: 48rem) {
     nav {
         top: 0;
