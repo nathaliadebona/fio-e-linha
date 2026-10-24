@@ -161,6 +161,9 @@
     }
 
     #checkout {
+        position: sticky;
+        top: 1.5rem;
+        align-self: start;
         margin-top: 0;
     }
 
