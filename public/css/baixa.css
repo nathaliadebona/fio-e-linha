@@ -58,3 +58,24 @@
     border-radius: 50%;
     background-color: var(--cor-fundo);
 }
+
+#checkout {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo-alt);
+}
+
+#checkout h2 {
+    margin-bottom: 1rem;
+    font-family: var(--fonte-titulos);
+    font-size: 1.5rem;
+    color: var(--cor-detalhes);
+}
+
+#checkout-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    list-style: none;
+}
