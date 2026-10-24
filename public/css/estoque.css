@@ -269,7 +269,14 @@
 }
 
 @media (min-width: 48rem) {
-    
+    .barra-busca {
+        flex-direction: row;
+    }
+
+    .campo-busca {
+        display: flex;
+        flex: 1;
+    }
 }
 
 @media (min-width: 60rem) {
