@@ -152,6 +152,13 @@
     opacity: 0.5;
 }
 
+#resultados input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--cor-acoes);
+    cursor: pointer;
+}
+
 @media (min-width: 48rem) {
     main {
         display: grid;
