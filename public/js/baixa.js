@@ -210,7 +210,7 @@ darBaixaBtn.addEventListener('click', async () => {
         return;
     }
 
-    await fetch('/api/baixa', {
+    const resposta = await fetch('/api/baixa', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -218,6 +218,12 @@ darBaixaBtn.addEventListener('click', async () => {
         },
         body: JSON.stringify({ itens: checkout })
     });
+
+    if (resposta.ok) {
+        checkout = [];
+        renderizarCheckout();
+        await carregarPecas();
+    }
 });
 
 carregarPecas();
