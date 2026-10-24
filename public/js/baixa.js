@@ -9,6 +9,7 @@ const itemTamanho = document.getElementById('item-tamanho');
 const formItem = document.getElementById('form-item');
 const itemQuantidade = document.getElementById('item-quantidade');
 const itemErro = document.getElementById('item-erro');
+const checkoutLista = document.getElementById('checkout-lista');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
@@ -104,6 +105,16 @@ function aplicarFiltros() {
     renderizarResultados(filtradas);
 }
 
+function renderizarCheckout() {
+    checkoutLista.replaceChildren();
+
+    checkout.forEach((linha) => {
+        const item = document.createElement('li');
+        item.textContent = `${linha.nome} (${linha.codigo}) - ${linha.tamanho} - ${linha.quantidade}`;
+        checkoutLista.appendChild(item);
+    });
+}
+
 filtroCategoria.addEventListener('change', () => {
     aplicarFiltros();
 });
@@ -154,7 +165,7 @@ formItem.addEventListener('submit', (event) => {
         });
     }
 
-    console.log(checkout);
+    renderizarCheckout();
 
     modalItem.close();
 });
