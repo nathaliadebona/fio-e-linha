@@ -41,7 +41,7 @@
   - `48rem`: o menu vira barra lateral
   - `60rem`: a lista de peças vira uma linha por peça, com colunas
 - Entre `48rem` e `60rem`, o menu fica na lateral e as peças continuam em cartões empilhados, para a linha nunca ficar apertada
-- Os wireframes foram desenhados para desktop; o layout de celular de Baixa e Histórico ainda precisa ser definido
+- Os wireframes foram desenhados para desktop; o layout de celular do Histórico ainda precisa ser definido
 
 ## Menu (telas internas)
 - **Celular:** barra fixa na base, com 4 itens lado a lado (Estoque, Baixa, Histórico, Sair), ícone em cima do texto
@@ -53,7 +53,7 @@
 ## Telas
 1. **Login** (pronta)
 2. **Estoque** (pronta)
-3. **Baixa** (a fazer)
+3. **Baixa** (pronta)
 4. **Histórico de vendas** (a fazer)
 5. **Dashboard** (parte 2)
 
@@ -128,6 +128,16 @@
 - "Código inexistente"
 - "Baixa efetuada com sucesso"
 - O alerta de estoque baixo **não** aparece aqui, para não confundir com a mensagem de sucesso
+- Também há uma mensagem para quando o servidor recusa a baixa porque o estoque mudou no meio da venda
+
+**Celular e desktop**
+- No celular, os resultados e o checkout ficam empilhados, e um botão redondo flutuante, acima do menu, leva até o checkout e mostra quantos itens já foram adicionados
+- No desktop (≥48rem), o checkout fica ao lado da lista, grudado no alto da tela (`position: sticky`), com a lista de itens rolando por dentro e o resumo e o botão sempre à vista, e o botão flutuante some
+
+**No servidor**
+- A rota de baixa confere todas as linhas antes de mexer em qualquer uma, e só então desconta o estoque, registra a venda em `data/vendas.json` e grava os arquivos
+- Cada venda guarda `id`, o usuário que a registrou (vindo do token), a data e hora e os itens, com nome, cor, preço do dia, tamanho, quantidade e `devolvida` (que começa em zero)
+- O preço de cada item é lido da peça no servidor, e não do que o navegador envia, e fica congelado no dia da venda
 
 ---
 
@@ -183,20 +193,22 @@
 - Backend: Node.js com Express, entregando a pasta `public`; os dados ficam em `data/*.json` (peças, vendas e usuários), gravados com `fs`
 - Login: o servidor confere usuário e senha e entrega um token (`crypto.randomUUID`), guardado na memória do servidor (`sessoes`) e no `localStorage` do navegador
 - Um middleware (`verificarToken`) protege as rotas de dados
-- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`
+- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`
 - O `global.js` funciona como porteiro nas telas internas: confere o token e manda para o Login se não valer (o Login nunca o carrega)
 - Categorias e seus tamanhos: um objeto em que a categoria é a chave e os tamanhos são a lista
 - Cada peça guarda `tamanhos` como um objeto (tamanho → quantidade)
 
 ## Em aberto
 - Como a Marina cadastra os usuários da loja
-- O que a venda guarda sobre o preço, para que mudar o valor de uma peça no futuro não altere a receita das vendas antigas
 - O que acontece com as caixas marcadas depois que a devolução é confirmada
 - O que acontece no modal de cadastro se a categoria for trocada depois de preencher os tamanhos
-- Onde fica o checkout no celular
 - Emojis no lugar dos ícones (o Font Awesome gratuito não tem ícone de calça)
 
+## Ideias para depois
+- Na Baixa, a mensagem "Há apenas __ em estoque" pode mostrar quanto ainda resta para adicionar (estoque do tamanho menos o que já está no checkout), em vez do total do estoque
+
 ## Melhorias de segurança para depois
+- Na rota de baixa, validar a quantidade no servidor (só inteiros positivos) e somar as linhas repetidas da mesma peça e tamanho antes de conferir o estoque
 - Guardar as senhas com hash, e não em texto puro
 - Rota de logout que também apague o token no servidor
 - Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste)
