@@ -140,6 +140,13 @@
     background-color: var(--cor-detalhes);
 }
 
+#item-erro {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-erro);
+}
+
 
 @media (min-width: 48rem) {
 
