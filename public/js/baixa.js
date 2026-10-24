@@ -132,7 +132,20 @@ function renderizarCheckout() {
 
     checkout.forEach((linha) => {
         const item = document.createElement('li');
-        item.textContent = `${linha.nome} (${linha.codigo}) - ${linha.tamanho} - ${linha.quantidade}`;
+
+        const textoLinha = document.createElement('div');
+        textoLinha.classList.add('texto-linha');
+
+        const nomeLinha = document.createElement('p');
+        nomeLinha.classList.add('nome-linha');
+        nomeLinha.textContent = `${linha.nome} (${linha.codigo})`;
+
+        const detalheLinha = document.createElement('p');
+        detalheLinha.classList.add('detalhe-linha');
+        detalheLinha.textContent = `Tamanho ${linha.tamanho} · ${linha.quantidade} un.`;
+
+        textoLinha.appendChild(nomeLinha);
+        textoLinha.appendChild(detalheLinha);
 
         const btnRemover = document.createElement('button');
         btnRemover.type = 'button';
@@ -149,13 +162,13 @@ function renderizarCheckout() {
             renderizarCheckout();
         });
 
+        item.appendChild(textoLinha);
         item.appendChild(btnRemover);
         checkoutLista.appendChild(item);
     });
 
     const totalItens = checkout.reduce((soma, linha) => soma + linha.quantidade, 0);
     checkoutItens.textContent = totalItens;
-
     checkoutContador.textContent = totalItens;
 
     const total = checkout.reduce((soma, linha) => soma + linha.preco * linha.quantidade, 0);
