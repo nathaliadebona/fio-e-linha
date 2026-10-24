@@ -105,6 +105,13 @@ app.post('/api/baixa', verificarToken, (req, res) => {
         return res.status(400).json({ ok: false });
     }
 
+    itens.forEach((item) => {
+        const peca = pecas.find((p) => p.codigo === item.codigo);
+        peca.tamanhos[item.tamanho] -= item.quantidade;
+    });
+
+    fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
+
     res.json({ ok: true });
 });
 
