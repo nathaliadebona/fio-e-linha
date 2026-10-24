@@ -19,3 +19,9 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+#form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
