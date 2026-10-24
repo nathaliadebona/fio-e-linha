@@ -13,6 +13,7 @@ const itemErro = document.getElementById('item-erro');
 let todasAsPecas = [];
 let checkboxAtual = null;
 let pecaAtual = null;
+let checkout = [];
 
 async function carregarPecas() {
     const resposta = await fetch('/api/pecas', { headers: { Authorization: token } });
@@ -130,12 +131,30 @@ formItem.addEventListener('submit', (event) => {
     const disponivel = pecaAtual.tamanhos[tamanho];
 
     if (quantidade > disponivel) {
-        itemErro.textContent = `Há apenas ${disponivel} em estoque`
+        itemErro.textContent = `Há apenas ${disponivel} em estoque`;
         itemErro.hidden = false;
         return;
     }
 
-    console.log(pecaAtual.nome, tamanho, quantidade);
+    const existente = checkout.find((linha) => {
+        return linha.codigo === pecaAtual.codigo && linha.tamanho === tamanho;
+    });
+
+    if (existente) {
+        existente.quantidade += quantidade;
+    } else {
+        checkout.push({
+            codigo: pecaAtual.codigo,
+            nome: pecaAtual.nome,
+            tamanho,
+            quantidade,
+            preco: pecaAtual.venda
+        });
+    }
+
+    console.log(checkout);
+
+    modalItem.close();
 });
 
 carregarPecas();
