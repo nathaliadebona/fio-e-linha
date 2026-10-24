@@ -167,6 +167,12 @@
         margin-top: 0;
     }
 
+    #checkout-lista {
+        max-height: 50vh;
+        overflow-y: auto;
+        padding: 0.5rem;
+    }
+
     .btn-flutuante {
         display: none;
     }
