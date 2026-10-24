@@ -1,6 +1,7 @@
 const express = require('express');
 const usuarios = require('./data/usuarios.json');
 const pecas = require('./data/pecas.json');
+const vendas = require('./data/vendas.json');
 const fs = require('fs');
 const app = express();
 const sessoes = {};
@@ -110,7 +111,17 @@ app.post('/api/baixa', verificarToken, (req, res) => {
         peca.tamanhos[item.tamanho] -= item.quantidade;
     });
 
+    const novaVenda = {
+        id: vendas.length + 1,
+        usuario: sessoes[req.headers.authorization],
+        data: new Date().toISOString(),
+        itens: []
+    };
+
+    vendas.push(novaVenda);
+
     fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
+    fs.writeFileSync('./data/vendas.json', JSON.stringify(vendas, null, 2));
 
     res.json({ ok: true });
 });
