@@ -225,8 +225,13 @@ function preencherBaixo() {
     });
 
     baixas.forEach((peca) => {
+        const tamanhosBaixos = Object.entries(peca.tamanhos)
+            .filter(([tamanho, quantidade]) => quantidade <= 3)
+            .map(([tamanho, quantidade]) => `${tamanho} ${quantidade}`)
+            .join(' · ');
+
         const item = document.createElement('li');
-        item.textContent = `${peca.nome} (${peca.codigo})`;
+        item.textContent = `${peca.nome} (${peca.codigo}): ${tamanhosBaixos}`;
         listaBaixo.appendChild(item);
     });
 }
