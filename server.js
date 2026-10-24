@@ -135,5 +135,9 @@ app.post('/api/baixa', verificarToken, (req, res) => {
     res.json({ ok: true });
 });
 
+app.get('/api/vendas', verificarToken, (req, res) => {
+    res.json(vendas);
+});
+
 app.listen(3000);
 
