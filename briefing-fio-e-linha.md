@@ -17,55 +17,88 @@
 
 **Paleta**
 - Fundo (off-white): `#FAF6F0`
-- Areia (menu lateral, cards, linhas alternadas): `#EFE6DA`
-- Terracota (botões principais e ações): `#B5532F`
-- Verde-oliva (sucesso e detalhes): `#6B6F3A`
+- Areia (menu, cartões, linhas): `#EFE6DA`
+- Terracota (botões principais e ações): `#B5532F`, hover `#9A4628`
+- Verde-oliva (detalhes, preços, títulos): `#6B6F3A`
 - Texto (marrom escuro): `#3B2F2A`
 - Alerta de estoque baixo (ocre): `#D9A03F`
 - Excluir e erros (vermelho tijolo): `#A63D2F`
 - O terracota fica só para ações, para não confundir o alerta com algo clicável
-- Conferir o contraste do texto sobre os botões com um verificador (ex.: WebAIM)
 
 **Fontes (Google Fonts)**
 - Títulos: Fraunces
 - Texto, tabelas e números: DM Sans
 
+**Ícones:** Font Awesome, um por categoria (camisa, vestido, etiqueta para calça, gema para acessório)
+
 ## Quem usa
 - Mais de uma pessoa trabalha na loja, então precisa de **login**
 - Todos os usuários têm o mesmo acesso
 
-## Estrutura geral
-- Menu lateral nas telas internas: Estoque, Baixa, Histórico e, separado lá embaixo, Sair
-- Layout pensado primeiro para desktop; versão para celular a definir
+## Abordagem de layout
+- **Mobile-first**, com unidades em `rem`
+- Dois pontos de quebra:
+  - `48rem`: o menu vira barra lateral
+  - `60rem`: a lista de peças vira uma linha por peça, com colunas
+- Entre `48rem` e `60rem`, o menu fica na lateral e as peças continuam em cartões empilhados, para a linha nunca ficar apertada
+- Os wireframes foram desenhados para desktop; o layout de celular de Baixa e Histórico ainda precisa ser definido
+
+## Menu (telas internas)
+- **Celular:** barra fixa na base, com 4 itens lado a lado (Estoque, Baixa, Histórico, Sair), ícone em cima do texto
+- **Desktop (≥48rem):** barra lateral de 12rem, ícone ao lado do texto, itens empilhados e centralizados na vertical
+- O **Sair fica junto dos outros itens** (decisão que difere do wireframe, que o separava embaixo)
+- A página atual fica destacada com uma pílula clara e `aria-current="page"`
+- O conteúdo ganha espaço para não ficar escondido atrás do menu
+
+## Telas
+1. **Login** (pronta)
+2. **Estoque** (pronta)
+3. **Baixa** (a fazer)
+4. **Histórico de vendas** (a fazer)
+5. **Dashboard** (parte 2)
 
 ---
 
 ## Tela: Login
 - Sem menu lateral
-- Labels visíveis: Usuário e Senha, botão Entrar
-- Mensagem de erro genérica, sem revelar qual dado errou: "Usuário ou senha incorretos"
+- Título "Fio & Linha", labels visíveis, campo de senha com botão de olho que mostra e oculta a senha
+- Mensagem de erro genérica: "Usuário ou senha incorretos"
+- Ao entrar, o navegador guarda o token e vai para o Estoque
 
 ## Tela: Estoque
 
-**Estrutura:** alerta no topo, busca + filtro + botão "+ Nova peça" (terracota), e a lista abaixo
-
-**Cadastro e edição (modal)**
-- O modal é o mesmo para cadastrar e editar (na edição, já vem preenchido)
-- A **categoria é o primeiro campo**, escolhida de uma lista (blusa, vestido, calça, acessório)
-- Os tamanhos dependem da categoria: P/M/G/GG para roupas, numeração para calças, "Único" para acessórios
-- A Marina clica nos tamanhos que chegaram, e só então aparece o campo de quantidade de cada um
-- Demais campos: nome, cor, código (por tipo + cor), preço de custo, valor de venda, fornecedor, data de chegada
-- O conteúdo rola dentro do modal, com o botão de salvar sempre visível
-- Imagem do produto fica fora do essencial (bônus)
-
-**Lista de produtos**
-- Ícone da categoria, nome com código, etiquetas de tamanho com quantidade (ex.: P 2 · M 1 · G 3), valor de venda
-- Botões: detalhes, editar, excluir (ícone de lixeira vermelha, com `aria-label`)
-- Excluir sempre pede confirmação
+**Topo:** alerta de estoque baixo, busca com lupa, filtro por categoria e botão "+ Nova peça"
 
 **Alerta**
-- Faixa no topo: "Você tem produtos com baixa quantidade em estoque", com botão que leva à lista
-- Etiqueta de tamanho em ocre quando houver **3 peças ou menos**
+- Aparece quando alguma peça tem um tamanho com 3 peças ou menos, e some quando nenhuma tem
+- Olha o estoque inteiro, independente da busca e do filtro
+- Tem um link "Ver peças" que abre um modal com todas as peças que têm tamanho com 3 peças ou menos, mostrando quais tamanhos estão baixos
+- O modal olha o estoque inteiro, e não só a lista filtrada, porque rolar a lista não ajuda quando há várias peças com estoque baixo
+
+**Busca e filtro**
+- A busca procura por nome ou código, e funciona junto com o filtro de categoria
+- A lupa é um botão sobre o campo, para quem não usa Enter
+
+**Lista de peças**
+- Cada peça mostra: ícone da categoria, nome (em cima) e código (embaixo, menor), etiquetas de tamanho com quantidade, valor de venda e botões Detalhes, Editar e Excluir (lixeira vermelha, afastada dos outros dois)
+- Etiquetas em ocre e em negrito quando o tamanho tem 3 peças ou menos
+- Celular: cartões empilhados
+- A partir de `60rem`: uma peça por linha, com 4 colunas (nome com ícone, etiquetas, valor, botões)
+
+**Cadastro e edição (modal)**
+- O mesmo modal serve para cadastrar e editar (na edição vem preenchido, com título "Editar peça")
+- A categoria é o primeiro campo e define os tamanhos disponíveis: P/M/G/GG para blusa e vestido, numeração para calça, "Único" para acessório
+- A Marina marca os tamanhos que chegaram, e só aí aparece o campo de quantidade (obrigatório enquanto o tamanho está marcado)
+- Demais campos: nome, cor, código, preço de custo, valor de venda, fornecedor, data de chegada
+- Exige ao menos um tamanho: a mensagem aparece dentro do grupo e a tela rola até ela
+- O conteúdo rola dentro do modal, com os cantos arredondados preservados
+
+**Detalhes (modal de leitura)**
+- Mostra o que o cartão não mostra: cor, preço de custo, fornecedor e data de chegada (dd/mm/aaaa)
+- É um modal separado do de cadastro, para nunca mexer no estado da edição
+
+**Excluir (modal de confirmação)**
+- Pergunta com o nome da peça, com botões Cancelar e Excluir
 
 ---
 
@@ -128,15 +161,14 @@
 
 ## Funcionalidades essenciais (MVP)
 - Login de usuários
-- Cadastro de peças com vários tamanhos, por categoria
-- Lista de estoque com alerta de estoque baixo (3 peças ou menos por tamanho)
+- Cadastro, edição e exclusão de peças com vários tamanhos, por categoria
+- Lista de estoque com busca, filtro e alerta de estoque baixo (3 peças ou menos por tamanho)
 - Baixa de várias peças de uma vez, com checkout
 - Histórico de vendas
 - Devolução registrada no histórico (parcial ou total)
 
 ## Bônus (parte 2)
 - Imagem real do produto, no lugar do ícone
-- Filtro por tipo de peça na lista de estoque
 - **Dashboard** (quinta tela), sempre lendo dados que já existem:
   - Receita da semana e do mês
   - Lucro da semana e do mês (receita menos o custo das peças)
@@ -147,11 +179,14 @@
   - Devoluções descontam da receita e do lucro, no dia em que foram feitas
 
 ## Decisões técnicas
-- Front-end: HTML, CSS e JavaScript puro
-- Backend simples: Node.js guardando dados em arquivos JSON, sem banco de dados
-- Dados guardados: lista de **peças** (cada uma com seus tamanhos), lista de **vendas** (cada uma com seus itens) e lista de **usuários**
+- Front-end: HTML, CSS e JavaScript puro, sem frameworks
+- Backend: Node.js com Express, entregando a pasta `public`; os dados ficam em `data/*.json` (peças, vendas e usuários), gravados com `fs`
+- Login: o servidor confere usuário e senha e entrega um token (`crypto.randomUUID`), guardado na memória do servidor (`sessoes`) e no `localStorage` do navegador
+- Um middleware (`verificarToken`) protege as rotas de dados
+- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`
+- O `global.js` funciona como porteiro nas telas internas: confere o token e manda para o Login se não valer (o Login nunca o carrega)
 - Categorias e seus tamanhos: um objeto em que a categoria é a chave e os tamanhos são a lista
-- Sem frameworks
+- Cada peça guarda `tamanhos` como um objeto (tamanho → quantidade)
 
 ## Em aberto
 - Como a Marina cadastra os usuários da loja
@@ -159,3 +194,9 @@
 - O que acontece com as caixas marcadas depois que a devolução é confirmada
 - O que acontece no modal de cadastro se a categoria for trocada depois de preencher os tamanhos
 - Onde fica o checkout no celular
+- Emojis no lugar dos ícones (o Font Awesome gratuito não tem ícone de calça)
+
+## Melhorias de segurança para depois
+- Guardar as senhas com hash, e não em texto puro
+- Rota de logout que também apague o token no servidor
+- Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste)
