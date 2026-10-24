@@ -118,6 +118,9 @@ function renderizarCheckout() {
 
     const totalItens = checkout.reduce((soma, linha) => soma + linha.quantidade, 0);
     checkoutItens.textContent = totalItens;
+
+    const total = checkout.reduce((soma, linha) => soma + linha.preco * linha.quantidade, 0);
+    checkoutTotal.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 filtroCategoria.addEventListener('change', () => {
