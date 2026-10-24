@@ -67,6 +67,7 @@ function renderizarResultados(lista) {
             }
         });
 
+
         const nomePeca = document.createElement('p');
         nomePeca.classList.add('nome-peca');
         nomePeca.textContent = `${peca.nome} (${peca.codigo})`;
@@ -94,9 +95,14 @@ function renderizarResultados(lista) {
         preco.classList.add('preco-peca');
         preco.textContent = peca.venda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+        const cabecalho = document.createElement('div');
+        cabecalho.classList.add('cabecalho-resultado');
+
+        cabecalho.appendChild(checkbox);
+        cabecalho.appendChild(nomePeca);
+
         listaResultados.appendChild(item);
-        item.appendChild(checkbox);
-        item.appendChild(nomePeca);
+        item.appendChild(cabecalho);
         item.appendChild(corPeca);
         item.appendChild(preco);
         item.appendChild(etiquetas);
