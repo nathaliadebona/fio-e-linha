@@ -130,15 +130,17 @@ formItem.addEventListener('submit', (event) => {
     const quantidade = Number(itemQuantidade.value);
     const disponivel = pecaAtual.tamanhos[tamanho];
 
-    if (quantidade > disponivel) {
+    const existente = checkout.find((linha) => {
+        return linha.codigo === pecaAtual.codigo && linha.tamanho === tamanho;
+    });
+
+    const jaNoCheckout = existente ? existente.quantidade : 0;
+
+    if (jaNoCheckout + quantidade > disponivel) {
         itemErro.textContent = `Há apenas ${disponivel} em estoque`;
         itemErro.hidden = false;
         return;
     }
-
-    const existente = checkout.find((linha) => {
-        return linha.codigo === pecaAtual.codigo && linha.tamanho === tamanho;
-    });
 
     if (existente) {
         existente.quantidade += quantidade;
