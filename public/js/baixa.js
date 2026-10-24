@@ -16,6 +16,7 @@ const darBaixaBtn = document.getElementById('dar-baixa-btn');
 const checkoutErro = document.getElementById('checkout-erro');
 const checkoutSucesso = document.getElementById('checkout-sucesso');
 const checkoutFalha = document.getElementById('checkout-falha');
+const checkoutContador = document.getElementById('checkout-contador');
 
 let todasAsPecas = [];
 let checkboxAtual = null;
@@ -154,6 +155,8 @@ function renderizarCheckout() {
 
     const totalItens = checkout.reduce((soma, linha) => soma + linha.quantidade, 0);
     checkoutItens.textContent = totalItens;
+
+    checkoutContador.textContent = totalItens;
 
     const total = checkout.reduce((soma, linha) => soma + linha.preco * linha.quantidade, 0);
     checkoutTotal.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
