@@ -118,7 +118,8 @@
 
 #modal-peca, 
 #modal-detalhes,
-#modal-excluir {
+#modal-excluir,
+#modal-baixo {
     width: 90%;
     max-width: 30rem;
     margin: auto;
@@ -132,13 +133,15 @@
 
 #modal-peca::backdrop,
 #modal-detalhes::backdrop,
-#modal-excluir::backdrop {
+#modal-excluir::backdrop,
+#modal-baixo::backdrop {
     background-color: rgba(59, 47, 42, 0.5);
 }
 
 #modal-peca h2,
 #modal-detalhes h2,
-#modal-excluir h2 {
+#modal-excluir h2,
+#modal-baixo h2 {
     margin-bottom: 1.5rem;
     font-family: var(--fonte-titulos);
     font-size: 1.6rem;
@@ -156,7 +159,8 @@
 }
 
 #fechar-modal,
-#fechar-detalhes {
+#fechar-detalhes,
+#fechar-baixo {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -249,6 +253,19 @@
 
 .acoes-modal button {
     flex: 1;
+}
+
+#lista-baixo {
+    list-style: none;
+}
+
+#lista-baixo li {
+    padding: 0.5rem 1rem;
+    border-bottom: 0.063rem solid var(--cor-detalhes);
+}
+
+#lista-baixo li:last-child {
+    border-bottom: none;
 }
 
 @media (min-width: 48rem) {
