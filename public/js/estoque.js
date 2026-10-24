@@ -17,8 +17,12 @@ const modalExcluir = document.getElementById('modal-excluir');
 const excluirTexto = document.getElementById('excluir-texto');
 const cancelarExcluirBtn = document.getElementById('cancelar-excluir');
 const confirmarExcluirBtn = document.getElementById('confirmar-excluir');
+const modalBaixo = document.getElementById('modal-baixo');
+const fecharBaixoBtn = document.getElementById('fechar-baixo');
+const listaBaixo = document.getElementById('lista-baixo');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
+const linkBaixo = alertaEstoque.querySelector('a');
 
 const icones = {
     blusa: 'fa-shirt',
@@ -213,6 +217,20 @@ function atualizarAlerta() {
     }
 }
 
+function preencherBaixo() {
+    listaBaixo.replaceChildren();
+
+    const baixas = todasAsPecas.filter((peca) => {
+        return Object.values(peca.tamanhos).some((quantidade) => quantidade <= 3);
+    });
+
+    baixas.forEach((peca) => {
+        const item = document.createElement('li');
+        item.textContent = `${peca.nome} (${peca.codigo})`;
+        listaBaixo.appendChild(item);
+    });
+}
+
 filtroCategoria.addEventListener('change', () => {
     aplicarFiltros();
 });
@@ -334,6 +352,17 @@ confirmarExcluirBtn.addEventListener('click', async () => {
     await carregarPecas();
     modalExcluir.close();
     pecaExcluindo = null;
+});
+
+linkBaixo.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    preencherBaixo();
+    modalBaixo.showModal();
+});
+
+fecharBaixoBtn.addEventListener('click', () => {
+    modalBaixo.close();
 });
 
 carregarPecas();
