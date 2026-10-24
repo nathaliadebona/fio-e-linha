@@ -118,6 +118,23 @@ function renderizarCheckout() {
     checkout.forEach((linha) => {
         const item = document.createElement('li');
         item.textContent = `${linha.nome} (${linha.codigo}) - ${linha.tamanho} - ${linha.quantidade}`;
+
+        const btnRemover = document.createElement('button');
+        btnRemover.type = 'button';
+        btnRemover.setAttribute('aria-label', `Remover ${linha.nome}, tamanho ${linha.tamanho}`);
+
+        const iconeRemover = document.createElement('i');
+        iconeRemover.classList.add('fa-solid', 'fa-trash');
+        iconeRemover.setAttribute('aria-hidden', 'true');
+
+        btnRemover.appendChild(iconeRemover);
+
+        btnRemover.addEventListener('click', () => {
+            checkout = checkout.filter((outra) => outra !== linha);
+            renderizarCheckout();
+        });
+
+        item.appendChild(btnRemover);
         checkoutLista.appendChild(item);
     });
 
