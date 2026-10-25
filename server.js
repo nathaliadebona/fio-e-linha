@@ -120,6 +120,7 @@ app.post('/api/baixa', verificarToken, (req, res) => {
             codigo: peca.codigo,
             nome: peca.nome,
             cor: peca.cor,
+            categoria: peca.categoria,
             preco: peca.venda,
             tamanho: item.tamanho,
             quantidade: item.quantidade,

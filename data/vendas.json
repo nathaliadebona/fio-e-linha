@@ -69,5 +69,32 @@
         ]
       }
     ]
+  },
+  {
+    "id": 4,
+    "usuario": "equipe",
+    "data": "2026-10-25T18:17:10.685Z",
+    "itens": [
+      {
+        "codigo": "BL-001",
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "categoria": "blusa",
+        "preco": 89.9,
+        "tamanho": "P",
+        "quantidade": 1,
+        "devolvida": 0
+      },
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "categoria": "calca",
+        "preco": 89.9,
+        "tamanho": "36",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]
