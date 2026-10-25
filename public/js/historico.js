@@ -7,6 +7,8 @@ const devolverBtn = document.getElementById('devolver-btn');
 const cancelarDevolucaoBtn = document.getElementById('cancelar-devolucao');
 const formDevolucao = document.getElementById('form-devolucao');
 const devolucaoErro = document.getElementById('devolucao-erro');
+const filtroDia = document.getElementById('filtro-dia');
+const limparFiltroBtn = document.getElementById('limpar-filtro');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -18,7 +20,7 @@ async function carregarVendas() {
 
     todasAsVendas = vendas;
 
-    renderizarVendas(vendas);
+    aplicarFiltros();
 }
 
 function renderizarVendas(lista) {
@@ -99,6 +101,15 @@ function atualizarBarra() {
     } else {
         barraDevolucao.hidden = false;
     }
+}
+
+function aplicarFiltros() {
+    const limite = new Date();
+    limite.setDate(limite.getDate() - 7);
+
+    const filtradas = todasAsVendas.filter((venda) => new Date(venda.data) >= limite);
+
+    renderizarVendas(filtradas);
 }
 
 devolverBtn.addEventListener('click', () => {
