@@ -43,7 +43,14 @@
         "preco": 89.9,
         "tamanho": "36",
         "quantidade": 1,
-        "devolvida": 0
+        "devolvida": 1,
+        "devolucoes": [
+          {
+            "quantidade": 1,
+            "usuario": "equipe",
+            "data": "2026-10-25T20:48:45.670Z"
+          }
+        ]
       }
     ]
   },
@@ -116,6 +123,40 @@
         "categoria": "vestido",
         "preco": 99.9,
         "tamanho": "M",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "usuario": "equipe",
+    "data": "2026-10-25T20:48:55.539Z",
+    "itens": [
+      {
+        "codigo": "BL-001",
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "categoria": "blusa",
+        "preco": 89.9,
+        "tamanho": "G",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "usuario": "equipe",
+    "data": "2026-10-25T20:49:08.233Z",
+    "itens": [
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "categoria": "calca",
+        "preco": 89.9,
+        "tamanho": "36",
         "quantidade": 1,
         "devolvida": 0
       }

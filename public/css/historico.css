@@ -120,6 +120,14 @@ main {
     font-weight: 700;
 }
 
+#devolucao-sucesso {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--cor-fundo);
+    background-color: var(--cor-detalhes);
+}
+
 @media (min-width: 48rem) {
     nav + main {
         padding-bottom: 6rem;
