@@ -49,6 +49,7 @@
 - O **Sair fica junto dos outros itens** (decisão que difere do wireframe, que o separava embaixo)
 - A página atual fica destacada com uma pílula clara e `aria-current="page"`
 - O conteúdo ganha espaço para não ficar escondido atrás do menu
+- O menu é montado pelo `global.js` a partir de uma lista de itens (`itensMenu`), e cada página diz qual ela é com `data-pagina` no `<body>`. Para acrescentar uma tela, basta incluir um item na lista.
 
 ## Telas
 1. **Login** (pronta)
@@ -91,6 +92,7 @@
 - A Marina marca os tamanhos que chegaram, e só aí aparece o campo de quantidade (obrigatório enquanto o tamanho está marcado)
 - Demais campos: nome, cor, código, preço de custo, valor de venda, fornecedor, data de chegada
 - Exige ao menos um tamanho: a mensagem aparece dentro do grupo e a tela rola até ela
+- O **código é único**: a Baixa e a Devolução acham a peça pelo código, então o servidor recusa (erro 400) o cadastro ou a edição de uma peça com código que outra já usa. Na edição, a peça não conta contra ela mesma. O modal mostra "Já existe uma peça com esse código" e não fecha
 - O conteúdo rola dentro do modal, com os cantos arredondados preservados
 
 **Detalhes (modal de leitura)**

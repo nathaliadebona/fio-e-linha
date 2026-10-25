@@ -9,6 +9,12 @@ const formPeca = document.getElementById('form-peca');
 const categoriaSelect = document.getElementById('categoria');
 const listaTamanhos = document.getElementById('lista-tamanhos');
 const dataChegada = document.getElementById('data-chegada');
+const campoNome = document.getElementById('nome');
+const campoCor = document.getElementById('cor');
+const campoCodigo = document.getElementById('codigo');
+const campoCusto = document.getElementById('custo');
+const campoVenda = document.getElementById('venda');
+const campoFornecedor = document.getElementById('fornecedor');
 const erroTamanhos = document.getElementById('erro-tamanhos');
 const modalDetalhes = document.getElementById('modal-detalhes');
 const fecharDetalhesBtn = document.getElementById('fechar-detalhes');
@@ -126,12 +132,12 @@ function renderizarPecas(lista) {
 
             document.querySelector('#modal-peca h2').textContent = 'Editar peça';
             
-            nome.value = peca.nome;
-            cor.value = peca.cor;
-            codigo.value = peca.codigo;
-            custo.value = peca.custo;
-            venda.value = peca.venda;
-            fornecedor.value = peca.fornecedor;
+            campoNome.value = peca.nome;
+            campoCor.value = peca.cor;
+            campoCodigo.value = peca.codigo;
+            campoCusto.value = peca.custo;
+            campoVenda.value = peca.venda;
+            campoFornecedor.value = peca.fornecedor;
             dataChegada.value = peca.dataChegada;
             categoriaSelect.value = peca.categoria;
 
@@ -315,13 +321,13 @@ formPeca.addEventListener('submit', async (event) => {
     }
 
     const novaPeca = {
-        categoria: categoria.value,
-        nome: nome.value,
-        cor: cor.value,
-        codigo: codigo.value,
-        custo: Number(custo.value),
-        venda: Number(venda.value),
-        fornecedor: fornecedor.value,
+        categoria: categoriaSelect.value,
+        nome: campoNome.value,
+        cor: campoCor.value,
+        codigo: campoCodigo.value,
+        custo: Number(campoCusto.value),
+        venda: Number(campoVenda.value),
+        fornecedor: campoFornecedor.value,
         dataChegada: dataChegada.value,
         tamanhos
     };
