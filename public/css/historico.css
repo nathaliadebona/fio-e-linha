@@ -124,6 +124,16 @@ main {
     nav + main {
         padding-bottom: 6rem;
     }
+    
+    .barra-filtros {
+        flex-direction: row;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .barra-filtros button {
+        padding: 0.5625rem 0.5rem;
+    }
 
     #barra-devolucao {
         left: 13rem;
