@@ -56,7 +56,16 @@ app.get('/api/pecas', verificarToken, (req, res) => {
 
 app.post('/api/pecas', verificarToken, (req, res) => {
     const novaPeca = req.body;
-       novaPeca.id = Math.max(0, ...pecas.map((p) => p.id)) + 1;
+
+    const codigoRepetido = pecas.some((p) => {
+        return p.codigo === novaPeca.codigo;
+    });
+
+    if (codigoRepetido) {
+        return res.status(400).json({ ok: false });
+    }
+
+    novaPeca.id = Math.max(0, ...pecas.map((p) => p.id)) + 1;
     pecas.push(novaPeca);
 
     fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
@@ -83,6 +92,14 @@ app.put('/api/pecas/:id', verificarToken, (req, res) => {
 
     if (indice === -1) {
         return res.status(404).json({ ok: false });
+    }
+
+    const codigoRepetido = pecas.some((p) => {
+        return p.codigo === req.body.codigo && p.id !== id;
+    });
+
+    if (codigoRepetido) {
+        return res.status(400).json({ ok: false });
     }
 
     pecas[indice] = { ...req.body, id };

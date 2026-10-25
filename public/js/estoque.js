@@ -20,6 +20,7 @@ const confirmarExcluirBtn = document.getElementById('confirmar-excluir');
 const modalBaixo = document.getElementById('modal-baixo');
 const fecharBaixoBtn = document.getElementById('fechar-baixo');
 const listaBaixo = document.getElementById('lista-baixo');
+const erroCodigo = document.getElementById('erro-codigo');
 
 const alertaEstoque = document.querySelector('.alerta-estoque');
 const linkBaixo = alertaEstoque.querySelector('a');
@@ -121,6 +122,7 @@ function renderizarPecas(lista) {
         btnEditar.addEventListener('click', () => {
             pecaEditandoId = peca.id;
             erroTamanhos.hidden = true;
+            erroCodigo.hidden = true;
 
             document.querySelector('#modal-peca h2').textContent = 'Editar peça';
             
@@ -247,6 +249,7 @@ buscaBtn.addEventListener('click', () => {
 
 novaPecaBtn.addEventListener('click', () => {
     erroTamanhos.hidden = true;
+    erroCodigo.hidden = true;
 
     pecaEditandoId = null;
     document.querySelector('#modal-peca h2').textContent = 'Nova peça';
@@ -327,7 +330,7 @@ formPeca.addEventListener('submit', async (event) => {
     const url = editando ? `/api/pecas/${pecaEditandoId}` : '/api/pecas';
     const metodo = editando ? 'PUT' : 'POST';
 
-    await fetch(url, {
+    const resposta = await fetch(url, {
         method: metodo,
         headers: {
             'Content-Type': 'application/json', 
@@ -335,6 +338,11 @@ formPeca.addEventListener('submit', async (event) => {
         },
         body: JSON.stringify(novaPeca)
     });
+
+    if (!resposta.ok) {
+        erroCodigo.hidden = false;
+        return;
+    }
 
     await carregarPecas();
     modalPeca.close();

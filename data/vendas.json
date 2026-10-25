@@ -161,5 +161,49 @@
         "devolvida": 0
       }
     ]
+  },
+  {
+    "id": 8,
+    "usuario": "equipe",
+    "data": "2026-10-25T22:33:57.428Z",
+    "itens": [
+      {
+        "codigo": "BL-001",
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "categoria": "blusa",
+        "preco": 89.9,
+        "tamanho": "P",
+        "quantidade": 1,
+        "devolvida": 1,
+        "devolucoes": [
+          {
+            "quantidade": 1,
+            "usuario": "equipe",
+            "data": "2026-10-25T22:34:14.874Z"
+          }
+        ]
+      },
+      {
+        "codigo": "VE-001",
+        "nome": "Vestido Midi Floral",
+        "cor": "Rosa",
+        "categoria": "vestido",
+        "preco": 99.9,
+        "tamanho": "M",
+        "quantidade": 1,
+        "devolvida": 0
+      },
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "categoria": "calca",
+        "preco": 89.9,
+        "tamanho": "38",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]

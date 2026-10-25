@@ -115,7 +115,8 @@
     font-weight: 600;
 }
 
-#erro-tamanhos {
+#erro-tamanhos,
+#erro-codigo {
     margin-top: 0.5rem;
     text-align: center;
     font-size: 0.9rem;
