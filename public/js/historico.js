@@ -16,8 +16,18 @@ function renderizarVendas(lista) {
 
     lista.forEach((venda) => {
         const item = document.createElement('li');
-        item.textContent = `Venda ${venda.id} - ${venda.usuario}`;
+    
+        const usuario = document.createElement('p');
+        usuario.classList.add('usuario-venda');
+        usuario.textContent = `Registrada por ${venda.usuario}`;
+
+        const data = document.createElement('p');
+        data.classList.add('data-venda');
+        data.textContent = new Date(venda.data).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+
         listaVendas.appendChild(item);
+        item.appendChild(usuario);
+        item.appendChild(data);
     });
 }
 
