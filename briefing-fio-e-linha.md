@@ -41,7 +41,7 @@
   - `48rem`: o menu vira barra lateral
   - `60rem`: a lista de peças vira uma linha por peça, com colunas
 - Entre `48rem` e `60rem`, o menu fica na lateral e as peças continuam em cartões empilhados, para a linha nunca ficar apertada
-- Os wireframes foram desenhados para desktop; o layout de celular do Histórico ainda precisa ser definido
+- Os wireframes foram desenhados para desktop, e o layout de celular de cada tela foi definido durante a construção
 
 ## Menu (telas internas)
 - **Celular:** barra fixa na base, com 4 itens lado a lado (Estoque, Baixa, Histórico, Sair), ícone em cima do texto
@@ -54,7 +54,7 @@
 1. **Login** (pronta)
 2. **Estoque** (pronta)
 3. **Baixa** (pronta)
-4. **Histórico de vendas** (a fazer)
+4. **Histórico de vendas** (quase pronta)
 5. **Dashboard** (parte 2)
 
 ---
@@ -143,23 +143,28 @@
 
 ## Tela: Histórico de vendas
 
-**Estrutura:** busca + filtro no topo, cards de venda lado a lado, rolagem da página
+**Estrutura:** filtros no topo (dia e categoria, com botão "Limpar filtro"), cards de venda em grade no desktop e empilhados no celular, rolagem da página
 
 **Lista**
 - Abre mostrando os **últimos 7 dias**, com a venda mais recente primeiro
-- Filtros: por dia, categoria etc., para voltar no tempo
+- Filtro por dia: com o campo vazio mostra os últimos 7 dias, e com um dia escolhido mostra só as vendas daquele dia (no horário do navegador)
+- Filtro por categoria: a venda aparece inteira se algum produto dela for da categoria, e funciona junto com o filtro de dia
+- Cada venda guarda a categoria de cada produto, então as vendas feitas antes disso só aparecem com "Todas as categorias"
 
 **Cards**
 - Cabeçalho: quem registrou a baixa, data e hora
 - Produtos: nome, código, tamanho, cor e quantidade vendida
 - Caixa de seleção em cada produto
 - Não existe botão de editar venda: correções são feitas pela devolução
+- No fim do card fica o total da venda (preço do dia vezes quantidade, sem descontar devoluções), alinhado na base
 
 **Devolução**
 - Ao marcar produtos (de uma ou várias vendas), aparece uma **barra fixa no canto inferior** da tela: "devolver selecionados ao estoque" + botão. Sem botão dentro dos cards.
 - A barra mostra quantos produtos estão selecionados
 - Abre um modal com os produtos e a quantidade a devolver, que **trava** no máximo vendido
 - Cada item devolvido registra de qual venda veio e a data/hora da devolução
+- O servidor guarda, em cada produto da venda, quantas peças já voltaram e uma lista com a quantidade, o usuário e a data e hora de cada devolução
+- A caixa do produto devolvido por inteiro fica desabilitada, e a seleção é zerada sempre que a lista é redesenhada
 - Mensagem: "Produto devolvido ao estoque"
 
 **Linha devolvida no card**
@@ -193,14 +198,13 @@
 - Backend: Node.js com Express, entregando a pasta `public`; os dados ficam em `data/*.json` (peças, vendas e usuários), gravados com `fs`
 - Login: o servidor confere usuário e senha e entrega um token (`crypto.randomUUID`), guardado na memória do servidor (`sessoes`) e no `localStorage` do navegador
 - Um middleware (`verificarToken`) protege as rotas de dados
-- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`
+- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`, `GET /api/vendas`, `POST /api/devolucao`
 - O `global.js` funciona como porteiro nas telas internas: confere o token e manda para o Login se não valer (o Login nunca o carrega)
 - Categorias e seus tamanhos: um objeto em que a categoria é a chave e os tamanhos são a lista
 - Cada peça guarda `tamanhos` como um objeto (tamanho → quantidade)
 
 ## Em aberto
 - Como a Marina cadastra os usuários da loja
-- O que acontece com as caixas marcadas depois que a devolução é confirmada
 - O que acontece no modal de cadastro se a categoria for trocada depois de preencher os tamanhos
 - Emojis no lugar dos ícones (o Font Awesome gratuito não tem ícone de calça)
 
@@ -208,7 +212,7 @@
 - Na Baixa, a mensagem "Há apenas __ em estoque" pode mostrar quanto ainda resta para adicionar (estoque do tamanho menos o que já está no checkout), em vez do total do estoque
 
 ## Melhorias de segurança para depois
-- Na rota de baixa, validar a quantidade no servidor (só inteiros positivos) e somar as linhas repetidas da mesma peça e tamanho antes de conferir o estoque
+- Nas rotas de baixa e de devolução, validar a quantidade no servidor (só inteiros positivos) e somar as linhas repetidas da mesma peça e tamanho antes de conferir o estoque
 - Guardar as senhas com hash, e não em texto puro
 - Rota de logout que também apague o token no servidor
 - Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste)
