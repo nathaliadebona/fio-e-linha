@@ -52,6 +52,13 @@ select:focus-visible {
     outline-offset: 0.125rem;
 }
 
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--cor-acoes);
+    cursor: pointer;
+}
+
 label {
     font-weight: 600;
 }
