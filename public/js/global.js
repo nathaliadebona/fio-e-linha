@@ -29,11 +29,25 @@ function montarMenu() {
         lista.appendChild(li);
     });
 
+    const liSair = document.createElement('li');
+
+    const botaoSair = document.createElement('button');
+    botaoSair.type = 'button';
+    botaoSair.id = 'sair-btn';
+
+    const iconeSair = document.createElement('i');
+    iconeSair.classList.add('fa-solid', 'fa-right-from-bracket');
+    iconeSair.setAttribute('aria-hidden', 'true');
+
+    botaoSair.appendChild(iconeSair);
+    botaoSair.append(' Sair');
+
+    liSair.appendChild(botaoSair);
+    lista.appendChild(liSair);
+
     nav.appendChild(lista);
     return nav;
 }
-
-console.log(montarMenu().outerHTML);
 
 console.log(montarMenu().outerHTML);
 
