@@ -113,6 +113,10 @@ main {
 }
 
 @media (min-width: 48rem) {
+    nav + main {
+        padding-bottom: 6rem;
+    }
+
     #barra-devolucao {
         left: 13rem;
         bottom: 1rem;
