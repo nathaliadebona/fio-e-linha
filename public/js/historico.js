@@ -84,10 +84,18 @@ function renderizarVendas(lista) {
                 const iconeDevolucao = document.createElement('i');
                 iconeDevolucao.classList.add('fa-solid', 'fa-rotate-left');
                 iconeDevolucao.setAttribute('aria-hidden', 'true');
-
                 
                 avisoDevolucao.appendChild(iconeDevolucao);
                 avisoDevolucao.append(` Devolvido: ${produto.devolvida} de ${produto.quantidade}`);
+
+                const registros = produto.devolucoes || [];
+
+                const detalhes = registros.map((d) => {
+                    const quando = new Date(d.data).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+                    return `${d.quantidade} un. · ${d.usuario} · ${quando}`;
+                });
+
+                avisoDevolucao.title = detalhes.join('\n');
 
                 itemProduto.appendChild(avisoDevolucao);
             }
