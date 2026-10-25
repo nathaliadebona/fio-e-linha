@@ -61,6 +61,24 @@ function renderizarVendas(lista) {
             rotulo.append(`${produto.nome} (${produto.codigo}) · ${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`);
 
             itemProduto.appendChild(rotulo);
+
+            if (produto.devolvida > 0) {
+                itemProduto.classList.add('devolvido');
+
+                const avisoDevolucao = document.createElement('p');
+                avisoDevolucao.classList.add('aviso-devolucao');
+
+                const iconeDevolucao = document.createElement('i');
+                iconeDevolucao.classList.add('fa-solid', 'fa-rotate-left');
+                iconeDevolucao.setAttribute('aria-hidden', 'true');
+
+                
+                avisoDevolucao.appendChild(iconeDevolucao);
+                avisoDevolucao.append(` Devolvido: ${produto.devolvida} de ${produto.quantidade}`);
+
+                itemProduto.appendChild(avisoDevolucao);
+            }
+
             listaProdutos.appendChild(itemProduto);
         });
 
