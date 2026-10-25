@@ -65,6 +65,10 @@ main {
     background-color: var(--cor-fundo);
 }
 
+.itens-venda li.devolvido {
+    background-color: rgba(166, 61, 47, 0.12);
+}
+
 .itens-venda label {
     display: flex;
     align-items: center;
@@ -76,4 +80,11 @@ main {
     width: 1.2rem;
     height: 1.2rem;
     accent-color: var(--cor-acoes);
+}
+
+.aviso-devolucao {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-erro);
 }
