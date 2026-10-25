@@ -50,13 +50,11 @@
             <button type="button" id="nova-peca-btn" class="btn-primario"><i class="fa-solid fa-plus" aria-hidden="true"></i> Nova peça</button>
         </div>
 
-        <ul id="lista-pecas">
-
-        </ul>
+        <ul id="lista-pecas"></ul>
     </main>
 
-    <dialog id="modal-peca">
-        <h2>Nova peça</h2>
+    <dialog id="modal-peca" aria-labelledby="titulo-peca">
+        <h2 id="titulo-peca">Nova peça</h2>
     
         <form action="" id="form-peca">
             <div class="campo">
@@ -113,11 +111,11 @@
 
             <button type="submit" class="btn-primario">Salvar peça</button>
 
-            <button type="button" id="fechar-modal"  aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <button type="button" id="fechar-modal" aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </form>
     </dialog>
 
-    <dialog id="modal-detalhes">
+    <dialog id="modal-detalhes" aria-labelledby="detalhes-titulo">
         <h2 id="detalhes-titulo"></h2>
 
         <dl>
@@ -134,11 +132,11 @@
             <dd id="detalhe-data"></dd>
         </dl>
 
-        <button type="button" id="fechar-detalhes"  aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        <button type="button" id="fechar-detalhes" aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </dialog>
 
-    <dialog id="modal-excluir" role="alertdialog">
-        <h2>Excluir peça?</h2>
+    <dialog id="modal-excluir" role="alertdialog" aria-labelledby="titulo-excluir">
+        <h2 id="titulo-excluir">Excluir peça?</h2>
         <p id="excluir-texto"></p>
 
         <div class="acoes-modal">
@@ -147,8 +145,8 @@
         </div>
     </dialog>
 
-    <dialog id="modal-baixo">
-        <h2>Estoque baixo</h2>
+    <dialog id="modal-baixo" aria-labelledby="titulo-baixo">
+        <h2 id="titulo-baixo">Estoque baixo</h2>
 
         <ul id="lista-baixo"></ul>
 
