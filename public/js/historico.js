@@ -6,6 +6,7 @@ const listaDevolucao = document.getElementById('lista-devolucao');
 const devolverBtn = document.getElementById('devolver-btn');
 const cancelarDevolucaoBtn = document.getElementById('cancelar-devolucao');
 const formDevolucao = document.getElementById('form-devolucao');
+const devolucaoErro = document.getElementById('devolucao-erro');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -104,6 +105,7 @@ devolverBtn.addEventListener('click', () => {
         listaDevolucao.appendChild(item);
     });
 
+    devolucaoErro.hidden = true;
     modalDevolucao.showModal();
 });
 
@@ -131,6 +133,16 @@ formDevolucao.addEventListener('submit', async (event) => {
         },
         body: JSON.stringify({ devolucoes })
     });
+
+    if (resposta.ok) {
+        selecionados = [];
+        modalDevolucao.close();
+        await carregarVendas();
+        atualizarBarra();
+    } else {
+        devolucaoErro.textContent = 'Não foi possível devolver: confira as quantidades e tente de novo.';
+        devolucaoErro.hidden = false;
+    }
 });
 
 carregarVendas();

@@ -20,7 +20,14 @@
         "preco": 89.9,
         "tamanho": "36",
         "quantidade": 1,
-        "devolvida": 0
+        "devolvida": 1,
+        "devolucoes": [
+          {
+            "quantidade": 1,
+            "usuario": "equipe",
+            "data": "2026-10-25T17:31:32.809Z"
+          }
+        ]
       }
     ]
   },
