@@ -87,7 +87,19 @@ devolverBtn.addEventListener('click', () => {
         const podem = produto.quantidade - produto.devolvida;
 
         const item = document.createElement('li');
-        item.textContent = `${produto.nome} · ${produto.tamanho} · podem voltar: ${podem}`;
+
+        const rotulo = document.createElement('label');
+        rotulo.append(`${produto.nome} · ${produto.tamanho} · podem voltar: ${podem}`);
+
+        const campo = document.createElement('input');
+        campo.type = 'number';
+        campo.min = '1';
+        campo.max = podem;
+        campo.value = podem;
+        campo.required = true;
+
+        rotulo.appendChild(campo);
+        item.appendChild(rotulo);
         listaDevolucao.appendChild(item);
     });
 
