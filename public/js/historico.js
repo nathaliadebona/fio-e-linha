@@ -49,12 +49,6 @@ function renderizarVendas(lista) {
         const listaProdutos = document.createElement('ul');
         listaProdutos.classList.add('itens-venda');
 
-        const total = venda.itens.reduce((soma, produto) => soma + produto.preco * produto.quantidade, 0);
-
-        const totalVenda = document.createElement('p');
-        totalVenda.classList.add('total-venda');
-        totalVenda.textContent = `Total da venda: ${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
-
         venda.itens.forEach((produto) => {
             const itemProduto = document.createElement('li');
 
@@ -76,8 +70,22 @@ function renderizarVendas(lista) {
                 atualizarBarra();
             });
 
+            const textoProduto = document.createElement('span');
+            textoProduto.classList.add('texto-produto');
+
+            const nomeProduto = document.createElement('span');
+            nomeProduto.classList.add('nome-produto');
+            nomeProduto.textContent = `${produto.nome} (${produto.codigo})`;
+
+            const detalheProduto = document.createElement('span');
+            detalheProduto.classList.add('detalhe-produto');
+            detalheProduto.textContent = `${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`;
+
+            textoProduto.appendChild(nomeProduto);
+            textoProduto.appendChild(detalheProduto);
+
             rotulo.appendChild(caixa);
-            rotulo.append(`${produto.nome} (${produto.codigo}) · ${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`);
+            rotulo.appendChild(textoProduto);
 
             itemProduto.appendChild(rotulo);
 
@@ -90,7 +98,7 @@ function renderizarVendas(lista) {
                 const iconeDevolucao = document.createElement('i');
                 iconeDevolucao.classList.add('fa-solid', 'fa-rotate-left');
                 iconeDevolucao.setAttribute('aria-hidden', 'true');
-                
+
                 avisoDevolucao.appendChild(iconeDevolucao);
                 avisoDevolucao.append(` Devolvido: ${produto.devolvida} de ${produto.quantidade}`);
 
@@ -108,6 +116,12 @@ function renderizarVendas(lista) {
 
             listaProdutos.appendChild(itemProduto);
         });
+
+        const total = venda.itens.reduce((soma, produto) => soma + produto.preco * produto.quantidade, 0);
+
+        const totalVenda = document.createElement('p');
+        totalVenda.classList.add('total-venda');
+        totalVenda.textContent = `Total da venda: ${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
 
         listaVendas.appendChild(item);
         item.appendChild(cabecalho);
