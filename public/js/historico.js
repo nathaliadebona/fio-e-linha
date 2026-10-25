@@ -32,6 +32,9 @@ function renderizarVendas(lista) {
     lista.forEach((venda) => {
         const item = document.createElement('li');
 
+        const cabecalho = document.createElement('div');
+        cabecalho.classList.add('cabecalho-venda');
+
         const usuario = document.createElement('p');
         usuario.classList.add('usuario-venda');
         usuario.textContent = `Registrada por ${venda.usuario}`;
@@ -39,6 +42,9 @@ function renderizarVendas(lista) {
         const data = document.createElement('p');
         data.classList.add('data-venda');
         data.textContent = new Date(venda.data).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+
+        cabecalho.appendChild(usuario);
+        cabecalho.appendChild(data);
 
         const listaProdutos = document.createElement('ul');
         listaProdutos.classList.add('itens-venda');
@@ -90,8 +96,7 @@ function renderizarVendas(lista) {
         });
 
         listaVendas.appendChild(item);
-        item.appendChild(usuario);
-        item.appendChild(data);
+        item.appendChild(cabecalho);
         item.appendChild(listaProdutos);
     });
 }

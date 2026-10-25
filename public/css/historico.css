@@ -42,3 +42,12 @@ main {
     border-radius: 0.5rem;
     background-color: var(--cor-fundo-alt);
 }
+
+.cabecalho-venda {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.063rem solid var(--cor-detalhes);
+}
