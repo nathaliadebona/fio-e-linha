@@ -139,5 +139,10 @@ app.get('/api/vendas', verificarToken, (req, res) => {
     res.json(vendas);
 });
 
+app.post('/api/devolucao', verificarToken, (req, res) => {
+    console.log(req.body);
+    res.json({ ok: true });
+});
+
 app.listen(3000);
 

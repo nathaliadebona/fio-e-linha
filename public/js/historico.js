@@ -5,6 +5,7 @@ const modalDevolucao = document.getElementById('modal-devolucao');
 const listaDevolucao = document.getElementById('lista-devolucao');
 const devolverBtn = document.getElementById('devolver-btn');
 const cancelarDevolucaoBtn = document.getElementById('cancelar-devolucao');
+const formDevolucao = document.getElementById('form-devolucao');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -108,6 +109,21 @@ devolverBtn.addEventListener('click', () => {
 
 cancelarDevolucaoBtn.addEventListener('click', () => {
     modalDevolucao.close();
+});
+
+formDevolucao.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const campos = listaDevolucao.querySelectorAll('input');
+
+    const devolucoes = selecionados.map((marcado, i) => ({
+        vendaId: marcado.vendaId,
+        codigo: marcado.produto.codigo,
+        tamanho: marcado.produto.tamanho,
+        quantidade: Number(campos[i].value)
+    }));
+
+    console.log(devolucoes);
 });
 
 carregarVendas();
