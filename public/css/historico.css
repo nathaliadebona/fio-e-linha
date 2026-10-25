@@ -111,3 +111,10 @@ main {
 #lista-devolucao input {
     width: 100%;
 }
+
+@media (min-width: 48rem) {
+    #barra-devolucao {
+        left: 13rem;
+        bottom: 1rem;
+    }
+}
