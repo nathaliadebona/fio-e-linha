@@ -96,5 +96,22 @@
         "devolvida": 0
       }
     ]
+  },
+  {
+    "id": 5,
+    "usuario": "equipe",
+    "data": "2026-10-25T19:25:50.935Z",
+    "itens": [
+      {
+        "codigo": "VE-001",
+        "nome": "Vestido Midi Floral",
+        "cor": "Rosa",
+        "categoria": "vestido",
+        "preco": 99.9,
+        "tamanho": "M",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]

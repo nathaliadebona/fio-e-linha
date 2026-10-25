@@ -49,6 +49,12 @@ function renderizarVendas(lista) {
         const listaProdutos = document.createElement('ul');
         listaProdutos.classList.add('itens-venda');
 
+        const total = venda.itens.reduce((soma, produto) => soma + produto.preco * produto.quantidade, 0);
+
+        const totalVenda = document.createElement('p');
+        totalVenda.classList.add('total-venda');
+        totalVenda.textContent = `Total da venda: ${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+
         venda.itens.forEach((produto) => {
             const itemProduto = document.createElement('li');
 
@@ -106,6 +112,7 @@ function renderizarVendas(lista) {
         listaVendas.appendChild(item);
         item.appendChild(cabecalho);
         item.appendChild(listaProdutos);
+        item.appendChild(totalVenda);
     });
 }
 

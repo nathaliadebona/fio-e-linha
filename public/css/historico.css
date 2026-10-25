@@ -112,6 +112,14 @@ main {
     width: 100%;
 }
 
+.total-venda {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 0.063rem solid var(--cor-detalhes);
+    text-align: right;
+    font-weight: 700;
+}
+
 @media (min-width: 48rem) {
     nav + main {
         padding-bottom: 6rem;
@@ -120,5 +128,10 @@ main {
     #barra-devolucao {
         left: 13rem;
         bottom: 1rem;
+    }
+
+    #vendas {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
 }
