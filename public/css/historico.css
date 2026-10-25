@@ -19,3 +19,26 @@ main {
 #barra-devolucao[hidden] {
     display: none;
 }
+
+.barra-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#vendas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+#vendas > li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo-alt);
+}
