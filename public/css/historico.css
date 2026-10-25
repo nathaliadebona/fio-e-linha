@@ -1,0 +1,17 @@
+main {
+    padding-bottom: 11rem;
+}
+
+#barra-devolucao {
+    position: fixed;
+    right: 1rem;
+    left: 1rem;
+    bottom: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo-alt);
+}

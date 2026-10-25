@@ -1,4 +1,6 @@
 const listaVendas = document.getElementById('vendas');
+const barraDevolucao = document.getElementById('barra-devolucao');
+const devolucaoContagem = document.getElementById('devolucao-contagem');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -46,7 +48,7 @@ function renderizarVendas(lista) {
                     selecionados = selecionados.filter((outro) => outro !== marcado);
                 }
 
-                console.log(selecionados.length);
+                atualizarBarra();
             });
 
             rotulo.appendChild(caixa);
@@ -61,6 +63,16 @@ function renderizarVendas(lista) {
         item.appendChild(data);
         item.appendChild(listaProdutos);
     });
+}
+
+function atualizarBarra() {
+    devolucaoContagem.textContent = selecionados.length;
+
+    if (selecionados.length === 0) {
+        barraDevolucao.hidden = true;
+    } else {
+        barraDevolucao.hidden = false;
+    }
 }
 
 carregarVendas();
