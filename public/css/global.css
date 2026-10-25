@@ -46,7 +46,8 @@ input, select {
     border-radius: 0.5rem;
 }
 
-input:focus {
+input:focus-visible,
+select:focus-visible {
     outline: 0.125rem solid var(--cor-acoes);
     outline-offset: 0.125rem;
 }
@@ -74,7 +75,7 @@ label {
     border-radius: 0.5rem;
     background-color: transparent;
     cursor: pointer;
-    transition: background-color 0.3s ease-in;
+    transition: background-color 0.3s ease;
 }
 
 .btn-excluir {
@@ -252,7 +253,7 @@ nav i {
 
     nav + main {
         margin-left: 12rem;
-        padding-bottom: 1.5rem 1rem 1.5rem;
+        padding-bottom: 1.5rem;
     }
 
     nav a, nav button {

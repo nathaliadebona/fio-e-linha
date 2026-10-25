@@ -49,7 +49,7 @@ async function carregarPecas() {
     todasAsPecas = pecas;
 
     atualizarAlerta();
-    renderizarPecas(pecas);
+    aplicarFiltros();
 }
 
 function renderizarPecas(lista) {
@@ -120,6 +120,7 @@ function renderizarPecas(lista) {
 
         btnEditar.addEventListener('click', () => {
             pecaEditandoId = peca.id;
+            erroTamanhos.hidden = true;
 
             document.querySelector('#modal-peca h2').textContent = 'Editar peça';
             

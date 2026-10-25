@@ -197,6 +197,7 @@ devolverBtn.addEventListener('click', () => {
     });
 
     devolucaoErro.hidden = true;
+    devolucaoSucesso.hidden = true;
     modalDevolucao.showModal();
 });
 

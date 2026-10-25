@@ -3,8 +3,9 @@ const usuarios = require('./data/usuarios.json');
 const pecas = require('./data/pecas.json');
 const vendas = require('./data/vendas.json');
 const fs = require('fs');
+   const crypto = require('crypto');
 const app = express();
-const sessoes = {};
+   const sessoes = Object.create(null);
 
 app.use(express.json());
 
@@ -55,7 +56,7 @@ app.get('/api/pecas', verificarToken, (req, res) => {
 
 app.post('/api/pecas', verificarToken, (req, res) => {
     const novaPeca = req.body;
-    novaPeca.id = Math.max(...pecas.map((p) => p.id)) + 1;
+       novaPeca.id = Math.max(0, ...pecas.map((p) => p.id)) + 1;
     pecas.push(novaPeca);
 
     fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));

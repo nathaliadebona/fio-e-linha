@@ -30,7 +30,7 @@ async function carregarPecas() {
 
     todasAsPecas = pecas;
 
-    renderizarResultados(pecas);
+    aplicarFiltros();
 }
 
 function renderizarResultados(lista) {
