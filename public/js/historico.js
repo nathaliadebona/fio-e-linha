@@ -44,7 +44,8 @@ function renderizarVendas(lista) {
 
             const caixa = document.createElement('input');
             caixa.type = 'checkbox';
-
+            caixa.disabled = produto.devolvida >= produto.quantidade;
+            
             const marcado = { vendaId: venda.id, produto };
 
             caixa.addEventListener('change', () => {
