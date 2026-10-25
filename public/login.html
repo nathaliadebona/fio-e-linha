@@ -19,22 +19,22 @@
     <main>
         <h1>Fio &amp; Linha</h1>
         
-        <div class="mensagem-erro">
+        <div class="mensagem-erro" role="alert">
             <p>Usuário ou senha incorretos</p>
         </div>
 
         <form action="" id="login-form">
             <div class="campo-login">
                 <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" id="usuario" required>
+                <input type="text" name="usuario" id="usuario" autocomplete="username" required>
             </div>
         
             <div class="campo-login">
                 <label for="senha">Senha</label>
                 <div class="area-senha">
-                    <input type="password" name="senha" id="senha" required>
+                    <input type="password" name="senha" id="senha" autocomplete="current-password" required>
                     <button type="button" class="toggle-senha" aria-label="Mostrar senha">
-                        <i class="fa-regular fa-eye"></i>
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
