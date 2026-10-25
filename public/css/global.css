@@ -295,4 +295,12 @@ nav i {
     nav a:hover, nav button:hover {
         color: var(--cor-detalhes);
     }
+
+    .campo-busca button:hover,
+    .toggle-senha:hover,
+    #fechar-modal:hover,
+    #fechar-detalhes:hover,
+    #fechar-baixo:hover {
+        color: var(--cor-acoes);
+    }
 }
