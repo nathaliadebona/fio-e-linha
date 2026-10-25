@@ -140,7 +140,25 @@ app.get('/api/vendas', verificarToken, (req, res) => {
 });
 
 app.post('/api/devolucao', verificarToken, (req, res) => {
-    console.log(req.body);
+    const devolucoes = req.body.devolucoes;
+    let temProblema = false;
+
+    devolucoes.forEach((d) => {
+        const venda = vendas.find((v) => v.id === d.vendaId);
+
+        const produto = venda
+            ? venda.itens.find((item) => item.codigo === d.codigo && item.tamanho === d.tamanho)
+            : undefined;
+
+        if (!venda || !produto || d.quantidade > produto.quantidade - produto.devolvida) {
+            temProblema = true;
+        }
+    });
+
+    if (temProblema) {
+        return res.status(400).json({ ok: false });
+    }
+
     res.json({ ok: true });
 });
 
