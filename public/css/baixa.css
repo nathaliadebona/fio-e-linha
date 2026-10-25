@@ -195,3 +195,10 @@
         display: none;
     }
 }
+
+@media (hover: hover) {
+    #checkout-lista button:hover {
+        border-radius: 0.5rem;
+        background-color: rgba(166, 61, 47, 0.1);
+    }
+}
