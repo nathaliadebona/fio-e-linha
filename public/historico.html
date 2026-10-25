@@ -38,14 +38,18 @@
     </div>
 
     <dialog id="modal-devolucao">
-        <ul id="lista-devolucao"></ul>
+        <h2>Devolver ao estoque</h2>
 
-        <p id="devolucao-erro" role="alert" hidden></p>
+        <form action="" id="form-devolucao">
+            <ul id="lista-devolucao"></ul>
 
-        <div class="acoes-modal">
-            <button type="button" id="confirmar-devolucao" class="btn-primario">Confirmar</button>
-            <button type="button" id="cancelar-devolucao" class="btn-secundario">Cancelar</button>
-        </div>
+            <p id="devolucao-erro" role="alert" hidden></p>
+
+            <div class="acoes-modal">
+                <button type="button" id="cancelar-devolucao" class="btn-secundario">Cancelar</button>
+                <button type="submit" class="btn-primario">Confirmar</button>
+            </div>
+        </form>
     </dialog>
 
     <script src="js/global.js"></script>
