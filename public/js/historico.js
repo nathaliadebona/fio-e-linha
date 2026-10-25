@@ -25,6 +25,8 @@ async function carregarVendas() {
 
 function renderizarVendas(lista) {
     listaVendas.replaceChildren();
+    selecionados = [];
+    atualizarBarra();
 
     lista.forEach((venda) => {
         const item = document.createElement('li');
