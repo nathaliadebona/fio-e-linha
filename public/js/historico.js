@@ -9,6 +9,7 @@ const formDevolucao = document.getElementById('form-devolucao');
 const devolucaoErro = document.getElementById('devolucao-erro');
 const filtroDia = document.getElementById('filtro-dia');
 const limparFiltroBtn = document.getElementById('limpar-filtro');
+const filtroCategoria = document.getElementById('filtro-categoria');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -125,6 +126,14 @@ function aplicarFiltros() {
         });
     }
 
+    const categoria = filtroCategoria.value;
+
+    if (categoria !== '') {
+        filtradas = filtradas.filter((venda) => {
+            return venda.itens.some((produto) => produto.categoria === categoria);
+        });
+    }
+
     renderizarVendas(filtradas);
 }
 
@@ -198,6 +207,11 @@ filtroDia.addEventListener('change', () => {
 
 limparFiltroBtn.addEventListener('click', () => {
     filtroDia.value = '';
+    filtroCategoria.value = '';
+    aplicarFiltros();
+});
+
+filtroCategoria.addEventListener('change', () => {
     aplicarFiltros();
 });
 
