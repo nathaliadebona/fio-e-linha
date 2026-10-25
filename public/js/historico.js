@@ -10,6 +10,7 @@ const devolucaoErro = document.getElementById('devolucao-erro');
 const filtroDia = document.getElementById('filtro-dia');
 const limparFiltroBtn = document.getElementById('limpar-filtro');
 const filtroCategoria = document.getElementById('filtro-categoria');
+const devolucaoSucesso = document.getElementById('devolucao-sucesso');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -229,6 +230,8 @@ formDevolucao.addEventListener('submit', async (event) => {
         modalDevolucao.close();
         await carregarVendas();
         atualizarBarra();
+
+        devolucaoSucesso.hidden = false;
     } else {
         devolucaoErro.textContent = 'Não foi possível devolver: confira as quantidades e tente de novo.';
         devolucaoErro.hidden = false;
