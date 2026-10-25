@@ -185,7 +185,8 @@ nav i {
 #modal-detalhes,
 #modal-excluir,
 #modal-baixo,
-#modal-item {
+#modal-item,
+#modal-devolucao {
     width: 90%;
     max-width: 30rem;
     margin: auto;
@@ -200,8 +201,9 @@ nav i {
 #modal-peca::backdrop,
 #modal-detalhes::backdrop,
 #modal-excluir::backdrop,
-#modal-baixo::backdrop
-#modal-item::backdrop {
+#modal-baixo::backdrop,
+#modal-item::backdrop,
+#modal-devolucao::backdrop {
     background-color: rgba(59, 47, 42, 0.5);
 }
 
@@ -209,7 +211,8 @@ nav i {
 #modal-detalhes h2,
 #modal-excluir h2,
 #modal-baixo h2,
-#modal-item h2 {
+#modal-item h2,
+#modal-devolucao h2 {
     margin-bottom: 1.5rem;
     font-family: var(--fonte-titulos);
     font-size: 1.6rem;

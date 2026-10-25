@@ -88,3 +88,26 @@ main {
     font-weight: 600;
     color: var(--cor-erro);
 }
+
+#form-devolucao {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#lista-devolucao {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+#lista-devolucao label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#lista-devolucao input {
+    width: 100%;
+}
