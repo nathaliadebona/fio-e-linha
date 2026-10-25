@@ -49,8 +49,6 @@ function montarMenu() {
     return nav;
 }
 
-console.log(montarMenu().outerHTML);
-
 const token = localStorage.getItem('token');
 
 async function verificarSessao() {
@@ -62,6 +60,8 @@ async function verificarSessao() {
 }
 
 verificarSessao();
+
+document.body.prepend(montarMenu());
 
 const sairBtn = document.getElementById('sair-btn');
 
