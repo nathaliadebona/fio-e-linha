@@ -104,10 +104,24 @@ function atualizarBarra() {
 }
 
 function aplicarFiltros() {
-    const limite = new Date();
-    limite.setDate(limite.getDate() - 7);
+    let filtradas;
 
-    const filtradas = todasAsVendas.filter((venda) => new Date(venda.data) >= limite);
+    if (filtroDia.value === '') {
+        const limite = new Date();
+        limite.setDate(limite.getDate() - 7);
+
+        filtradas = todasAsVendas.filter((venda) => new Date(venda.data) >= limite);
+    } else {
+        const inicio = new Date(`${filtroDia.value}T00:00:00`);
+
+        const fim = new Date(inicio);
+        fim.setDate(fim.getDate() + 1);
+
+        filtradas = todasAsVendas.filter((venda) => {
+            const data = new Date(venda.data);
+            return data >= inicio && data < fim;
+        });
+    }
 
     renderizarVendas(filtradas);
 }
@@ -174,6 +188,15 @@ formDevolucao.addEventListener('submit', async (event) => {
         devolucaoErro.textContent = 'Não foi possível devolver: confira as quantidades e tente de novo.';
         devolucaoErro.hidden = false;
     }
+});
+
+filtroDia.addEventListener('change', () => {
+    aplicarFiltros();
+});
+
+limparFiltroBtn.addEventListener('click', () => {
+    filtroDia.value = '';
+    aplicarFiltros();
 });
 
 carregarVendas();
