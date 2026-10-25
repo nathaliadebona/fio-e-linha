@@ -159,6 +159,22 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
         return res.status(400).json({ ok: false });
     }
 
+    devolucoes.forEach((d) => {
+        const venda = vendas.find((v) => v.id === d.vendaId);
+        const produto = venda.itens.find((item) => item.codigo === d.codigo && item.tamanho === d.tamanho);
+
+        produto.devolvida += d.quantidade;
+
+        const peca = pecas.find((p) => p.codigo === d.codigo);
+
+        if (peca) {
+            peca.tamanhos[d.tamanho] = (peca.tamanhos[d.tamanho] || 0) + d.quantidade;
+        }
+    });
+
+    fs.writeFileSync('./data/pecas.json', JSON.stringify(pecas, null, 2));
+    fs.writeFileSync('./data/vendas.json', JSON.stringify(vendas, null, 2));
+
     res.json({ ok: true });
 });
 
