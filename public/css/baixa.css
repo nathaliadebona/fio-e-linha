@@ -103,6 +103,15 @@
     cursor: pointer;
 }
 
+.nome-linha {
+    font-weight: 600;
+}
+
+.detalhe-linha {
+    font-size: 0.85rem;
+    color: var(--cor-detalhes);
+}
+
 .resumo {
     display: flex;
     flex-direction: column;
