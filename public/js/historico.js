@@ -1,6 +1,10 @@
 const listaVendas = document.getElementById('vendas');
 const barraDevolucao = document.getElementById('barra-devolucao');
 const devolucaoContagem = document.getElementById('devolucao-contagem');
+const modalDevolucao = document.getElementById('modal-devolucao');
+const listaDevolucao = document.getElementById('lista-devolucao');
+const devolverBtn = document.getElementById('devolver-btn');
+const cancelarDevolucaoBtn = document.getElementById('cancelar-devolucao');
 
 let todasAsVendas = [];
 let selecionados = [];
@@ -74,5 +78,24 @@ function atualizarBarra() {
         barraDevolucao.hidden = false;
     }
 }
+
+devolverBtn.addEventListener('click', () => {
+    listaDevolucao.replaceChildren();
+
+    selecionados.forEach((marcado) => {
+        const produto = marcado.produto;
+        const podem = produto.quantidade - produto.devolvida;
+
+        const item = document.createElement('li');
+        item.textContent = `${produto.nome} · ${produto.tamanho} · podem voltar: ${podem}`;
+        listaDevolucao.appendChild(item);
+    });
+
+    modalDevolucao.showModal();
+});
+
+cancelarDevolucaoBtn.addEventListener('click', () => {
+    modalDevolucao.close();
+});
 
 carregarVendas();
