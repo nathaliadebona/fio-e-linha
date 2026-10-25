@@ -51,3 +51,29 @@ main {
     padding-bottom: 0.5rem;
     border-bottom: 0.063rem solid var(--cor-detalhes);
 }
+
+.itens-venda {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.itens-venda li {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo);
+}
+
+.itens-venda label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+.itens-venda input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--cor-acoes);
+}
