@@ -165,6 +165,15 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
 
         produto.devolvida += d.quantidade;
 
+        produto.devolucoes = produto.devolucoes || [];
+
+        produto.devolucoes.push({
+            quantidade: d.quantidade,
+            usuario: sessoes[req.headers.authorization],
+            data: new Date().toISOString()
+        });
+
+
         const peca = pecas.find((p) => p.codigo === d.codigo);
 
         if (peca) {
