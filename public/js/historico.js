@@ -111,7 +111,7 @@ cancelarDevolucaoBtn.addEventListener('click', () => {
     modalDevolucao.close();
 });
 
-formDevolucao.addEventListener('submit', (event) => {
+formDevolucao.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const campos = listaDevolucao.querySelectorAll('input');
@@ -123,7 +123,14 @@ formDevolucao.addEventListener('submit', (event) => {
         quantidade: Number(campos[i].value)
     }));
 
-    console.log(devolucoes);
+    const resposta = await fetch('/api/devolucao', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token
+        },
+        body: JSON.stringify({ devolucoes })
+    });
 });
 
 carregarVendas();
