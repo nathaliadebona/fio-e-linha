@@ -280,6 +280,10 @@ nav i {
         background-color: rgba(181, 83, 47, 0.1);
     }
 
+    .btn-excluir:hover {
+        background-color: rgba(166, 61, 47, 0.1);
+    }
+
     nav a:hover, nav button:hover {
         color: var(--cor-detalhes);
     }
