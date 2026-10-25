@@ -16,7 +16,7 @@ function renderizarVendas(lista) {
 
     lista.forEach((venda) => {
         const item = document.createElement('li');
-    
+
         const usuario = document.createElement('p');
         usuario.classList.add('usuario-venda');
         usuario.textContent = `Registrada por ${venda.usuario}`;
@@ -30,10 +30,22 @@ function renderizarVendas(lista) {
 
         venda.itens.forEach((produto) => {
             const itemProduto = document.createElement('li');
-            itemProduto.textContent = `${produto.nome} (${produto.codigo}) · ${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`;
 
+            const rotulo = document.createElement('label');
+
+            const caixa = document.createElement('input');
+            caixa.type = 'checkbox';
+
+            caixa.addEventListener('change', () => {
+                console.log(venda.id, produto.codigo, produto.tamanho, caixa.checked);
+            });
+
+            rotulo.appendChild(caixa);
+            rotulo.append(`${produto.nome} (${produto.codigo}) · ${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`);
+
+            itemProduto.appendChild(rotulo);
             listaProdutos.appendChild(itemProduto);
-        })
+        });
 
         listaVendas.appendChild(item);
         item.appendChild(usuario);
