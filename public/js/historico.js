@@ -14,6 +14,7 @@ let selecionados = [];
 async function carregarVendas() {
     const resposta = await fetch('/api/vendas', { headers: { Authorization: token } });
     const vendas = await resposta.json();
+    vendas.reverse();
 
     todasAsVendas = vendas;
 
@@ -45,7 +46,7 @@ function renderizarVendas(lista) {
             const caixa = document.createElement('input');
             caixa.type = 'checkbox';
             caixa.disabled = produto.devolvida >= produto.quantidade;
-            
+
             const marcado = { vendaId: venda.id, produto };
 
             caixa.addEventListener('change', () => {
