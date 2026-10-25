@@ -1,6 +1,7 @@
 const listaVendas = document.getElementById('vendas');
 
 let todasAsVendas = [];
+let selecionados = [];
 
 async function carregarVendas() {
     const resposta = await fetch('/api/vendas', { headers: { Authorization: token } });
@@ -36,8 +37,16 @@ function renderizarVendas(lista) {
             const caixa = document.createElement('input');
             caixa.type = 'checkbox';
 
+            const marcado = { vendaId: venda.id, produto };
+
             caixa.addEventListener('change', () => {
-                console.log(venda.id, produto.codigo, produto.tamanho, caixa.checked);
+                if (caixa.checked) {
+                    selecionados.push(marcado);
+                } else {
+                    selecionados = selecionados.filter((outro) => outro !== marcado);
+                }
+
+                console.log(selecionados.length);
             });
 
             rotulo.appendChild(caixa);
