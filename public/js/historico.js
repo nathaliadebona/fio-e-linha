@@ -25,9 +25,20 @@ function renderizarVendas(lista) {
         data.classList.add('data-venda');
         data.textContent = new Date(venda.data).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
 
+        const listaProdutos = document.createElement('ul');
+        listaProdutos.classList.add('itens-venda');
+
+        venda.itens.forEach((produto) => {
+            const itemProduto = document.createElement('li');
+            itemProduto.textContent = `${produto.nome} (${produto.codigo}) · ${produto.cor} · ${produto.tamanho} · ${produto.quantidade} un.`;
+
+            listaProdutos.appendChild(itemProduto);
+        })
+
         listaVendas.appendChild(item);
         item.appendChild(usuario);
         item.appendChild(data);
+        item.appendChild(listaProdutos);
     });
 }
 
