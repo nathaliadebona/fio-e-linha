@@ -99,7 +99,7 @@
 }
 
 #campo-tamanhos {
-    border: 0.063rem solid var(--cor-detalhes);
+    border: 0.0625rem solid var(--cor-detalhes);
     border-radius: 0.5rem;
 }
 
@@ -130,7 +130,7 @@
 #modal-detalhes dt, 
 #modal-detalhes dd {
     padding: 1rem 0.5rem;
-    border-bottom: 0.063rem solid var(--cor-detalhes);
+    border-bottom: 0.0625rem solid var(--cor-detalhes);
 }
 
 #modal-detalhes dt:last-of-type, 
@@ -149,7 +149,7 @@
 
 #lista-baixo li {
     padding: 0.5rem 1rem;
-    border-bottom: 0.063rem solid var(--cor-detalhes);
+    border-bottom: 0.0625rem solid var(--cor-detalhes);
 }
 
 #lista-baixo li:last-child {

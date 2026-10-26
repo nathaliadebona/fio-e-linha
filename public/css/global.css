@@ -28,7 +28,7 @@ body {
 }
 
 main {
-      padding: 1.5rem 1rem calc(var(--altura-menu) + 1.5rem);
+    padding: 1.5rem 1rem calc(var(--altura-menu) + 1.5rem);
 }
 
 h1 {
@@ -43,7 +43,7 @@ input, button, select {
 
 input, select {
     padding: 0.5rem;
-    border: 0.063rem solid var(--cor-detalhes);
+    border: 0.0625rem solid var(--cor-detalhes);
     font-size: 1rem;
     border-radius: 0.5rem;
 }
@@ -78,7 +78,7 @@ label {
 
 .btn-secundario {
     padding: 0.5rem;
-    border: 0.063rem solid var(--cor-acoes);
+    border: 0.0625rem solid var(--cor-acoes);
     font-size: 1rem;
     color: var(--cor-acoes);
     border-radius: 0.5rem;

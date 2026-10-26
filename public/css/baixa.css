@@ -34,7 +34,7 @@
 .btn-flutuante {
     position: fixed;
     right: 1rem;
-    bottom: 6rem;
+    bottom: calc(var(--altura-menu) + 1rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,8 +90,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.5rem;
-    padding-left: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 #checkout-lista button {
@@ -118,7 +117,7 @@
     gap: 0.5rem;
     margin-top: 0.5rem;
     padding-top: 0.5rem;
-    border-top: 0.063rem solid var(--cor-detalhes);
+    border-top: 0.0625rem solid var(--cor-detalhes);
 }
 
 .resumo p {
@@ -192,7 +191,6 @@
     }
 
     .btn-flutuante {
-        bottom: calc(var(--altura-menu) + 1rem);
         display: none;
     }
 }
