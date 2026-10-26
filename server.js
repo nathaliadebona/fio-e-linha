@@ -115,7 +115,9 @@ app.post('/api/baixa', verificarToken, (req, res) => {
     itens.forEach((item) => {
         const peca = pecas.find((p) => p.codigo === item.codigo);
 
-        if (!peca || item.quantidade > (peca.tamanhos[item.tamanho] || 0)) {
+        const quantidadeInvalida = !Number.isInteger(item.quantidade) || item.quantidade < 1;
+
+        if (!peca || quantidadeInvalida || item.quantidade > (peca.tamanhos[item.tamanho] || 0)) {
             temProblema = true;
         }
     });
@@ -169,7 +171,9 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
             ? venda.itens.find((item) => item.codigo === d.codigo && item.tamanho === d.tamanho)
             : undefined;
 
-        if (!venda || !produto || d.quantidade > produto.quantidade - produto.devolvida) {
+        const quantidadeInvalida = !Number.isInteger(d.quantidade) || d.quantidade < 1;
+
+        if (!venda || !produto || quantidadeInvalida || d.quantidade > produto.quantidade - produto.devolvida) {
             temProblema = true;
         }
     });

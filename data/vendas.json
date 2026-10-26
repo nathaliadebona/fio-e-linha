@@ -205,5 +205,29 @@
         "devolvida": 0
       }
     ]
+  },
+  {
+    "id": 9,
+    "usuario": "equipe",
+    "data": "2026-10-26T19:50:36.459Z",
+    "itens": [
+      {
+        "codigo": "AC-001",
+        "nome": "Colar com pingente",
+        "cor": "Prata",
+        "categoria": "acessorio",
+        "preco": 89.9,
+        "tamanho": "Único",
+        "quantidade": 2,
+        "devolvida": 1,
+        "devolucoes": [
+          {
+            "quantidade": 1,
+            "usuario": "equipe",
+            "data": "2026-10-26T19:52:09.430Z"
+          }
+        ]
+      }
+    ]
   }
 ]
