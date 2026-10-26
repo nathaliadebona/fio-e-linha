@@ -192,6 +192,7 @@
     }
 
     .btn-flutuante {
+        bottom: calc(var(--altura-menu) + 1rem);
         display: none;
     }
 }

@@ -10,6 +10,8 @@
 
     --fonte-titulos: 'Fraunces', serif;
     --fonte-corpo: 'DM Sans', sans-serif;
+
+    --altura-menu: 5rem;
 }
 
 * {
@@ -26,7 +28,7 @@ body {
 }
 
 main {
-    padding: 1.5rem 1rem 6.5rem;
+      padding: 1.5rem 1rem calc(var(--altura-menu) + 1.5rem);
 }
 
 h1 {
