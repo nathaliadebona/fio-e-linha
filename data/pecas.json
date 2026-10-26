@@ -9,7 +9,7 @@
     "fornecedor": "Tecidos Aurora",
     "dataChegada": "2026-10-15",
     "tamanhos": {
-      "P": 4,
+      "P": 3,
       "M": 4,
       "G": 4,
       "GG": 3
@@ -28,7 +28,7 @@
     "tamanhos": {
       "P": 4,
       "M": 4,
-      "G": 5
+      "G": 4
     },
     "id": 2
   },
@@ -44,7 +44,7 @@
     "tamanhos": {
       "36": 4,
       "38": 5,
-      "40": 3
+      "40": 2
     },
     "id": 3
   },
@@ -58,7 +58,7 @@
     "fornecedor": "Prata Fina",
     "dataChegada": "2026-10-19",
     "tamanhos": {
-      "Único": 4
+      "Único": 6
     },
     "id": 4
   }

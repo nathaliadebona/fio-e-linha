@@ -111,13 +111,21 @@ app.put('/api/pecas/:id', verificarToken, (req, res) => {
 app.post('/api/baixa', verificarToken, (req, res) => {
     const itens = req.body.itens;
     let temProblema = false;
+    const totais = {};
 
     itens.forEach((item) => {
         const peca = pecas.find((p) => p.codigo === item.codigo);
-
         const quantidadeInvalida = !Number.isInteger(item.quantidade) || item.quantidade < 1;
 
-        if (!peca || quantidadeInvalida || item.quantidade > (peca.tamanhos[item.tamanho] || 0)) {
+        if (!peca || quantidadeInvalida) {
+            temProblema = true;
+            return;
+        }
+
+        const chave = `${item.codigo}|${item.tamanho}`;
+        totais[chave] = (totais[chave] || 0) + item.quantidade;
+
+        if (totais[chave] > (peca.tamanhos[item.tamanho] || 0)) {
             temProblema = true;
         }
     });
@@ -163,6 +171,7 @@ app.get('/api/vendas', verificarToken, (req, res) => {
 app.post('/api/devolucao', verificarToken, (req, res) => {
     const devolucoes = req.body.devolucoes;
     let temProblema = false;
+    const totais = {};
 
     devolucoes.forEach((d) => {
         const venda = vendas.find((v) => v.id === d.vendaId);
@@ -173,7 +182,15 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
 
         const quantidadeInvalida = !Number.isInteger(d.quantidade) || d.quantidade < 1;
 
-        if (!venda || !produto || quantidadeInvalida || d.quantidade > produto.quantidade - produto.devolvida) {
+        if (!venda || !produto || quantidadeInvalida) {
+            temProblema = true;
+            return;
+        }
+
+        const chave = `${d.vendaId}|${d.codigo}|${d.tamanho}`;
+        totais[chave] = (totais[chave] || 0) + d.quantidade;
+
+        if (totais[chave] > produto.quantidade - produto.devolvida) {
             temProblema = true;
         }
     });
@@ -195,7 +212,6 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
             usuario: sessoes[req.headers.authorization],
             data: new Date().toISOString()
         });
-
 
         const peca = pecas.find((p) => p.codigo === d.codigo);
 

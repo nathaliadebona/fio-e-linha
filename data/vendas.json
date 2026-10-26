@@ -229,5 +229,83 @@
         ]
       }
     ]
+  },
+  {
+    "id": 10,
+    "usuario": "equipe",
+    "data": "2026-10-26T19:57:51.690Z",
+    "itens": [
+      {
+        "codigo": "CA-001",
+        "nome": "Calça de Alfaiataria",
+        "cor": "Preto",
+        "categoria": "calca",
+        "preco": 89.9,
+        "tamanho": "40",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "usuario": "equipe",
+    "data": "2026-10-26T19:59:54.854Z",
+    "itens": [
+      {
+        "codigo": "BL-001",
+        "nome": "Camisa de linho",
+        "cor": "Off-white",
+        "categoria": "blusa",
+        "preco": 89.9,
+        "tamanho": "P",
+        "quantidade": 1,
+        "devolvida": 0
+      },
+      {
+        "codigo": "VE-001",
+        "nome": "Vestido Midi Floral",
+        "cor": "Rosa",
+        "categoria": "vestido",
+        "preco": 99.9,
+        "tamanho": "G",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "usuario": "equipe",
+    "data": "2026-10-26T20:04:30.118Z",
+    "itens": [
+      {
+        "codigo": "AC-001",
+        "nome": "Colar com pingente",
+        "cor": "Prata",
+        "categoria": "acessorio",
+        "preco": 89.9,
+        "tamanho": "Único",
+        "quantidade": 1,
+        "devolvida": 1,
+        "devolucoes": [
+          {
+            "quantidade": 1,
+            "usuario": "equipe",
+            "data": "2026-10-26T20:11:25.825Z"
+          }
+        ]
+      },
+      {
+        "codigo": "AC-001",
+        "nome": "Colar com pingente",
+        "cor": "Prata",
+        "categoria": "acessorio",
+        "preco": 89.9,
+        "tamanho": "Único",
+        "quantidade": 1,
+        "devolvida": 0
+      }
+    ]
   }
 ]
