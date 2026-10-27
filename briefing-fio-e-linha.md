@@ -44,7 +44,7 @@
 - Os wireframes foram desenhados para desktop, e o layout de celular de cada tela foi definido durante a construção
 
 ## Menu (telas internas)
-- **Celular:** barra fixa na base, com 4 itens lado a lado (Estoque, Baixa, Histórico, Sair), ícone em cima do texto
+- **Celular:** barra fixa na base, com 5 itens lado a lado (Estoque, Baixa, Histórico, Usuários, Sair), ícone em cima do texto (conferir se cabe em telas bem estreitas)
 - **Desktop (≥48rem):** barra lateral de 12rem, ícone ao lado do texto, itens empilhados e centralizados na vertical
 - O **Sair fica junto dos outros itens** (decisão que difere do wireframe, que o separava embaixo)
 - A página atual fica destacada com uma pílula clara e `aria-current="page"`
@@ -56,7 +56,8 @@
 2. **Estoque** (pronta)
 3. **Baixa** (pronta)
 4. **Histórico de vendas** (quase pronta)
-5. **Dashboard** (parte 2)
+5. **Usuários** (pronta)
+6. **Dashboard** (parte 2)
 
 ---
 
@@ -178,8 +179,31 @@
 
 ---
 
+## Tela: Usuários
+
+**Quem usa:** qualquer pessoa logada (todos têm o mesmo acesso, então qualquer uma pode cadastrar ou remover outras)
+
+**Estrutura:** formulário de cadastro no topo e, embaixo, a lista de quem tem acesso
+
+**Cadastro**
+- Campos: usuário, senha e confirmar senha, cada senha com o olhinho de mostrar e ocultar
+- A senha precisa ter pelo menos 6 caracteres: "A senha precisa ter pelo menos 6 caracteres"
+- As duas senhas precisam ser iguais: "As senhas não conferem"
+- Usuário repetido (sem diferenciar maiúscula de minúscula) é recusado pelo servidor: "Esse usuário já existe"
+- O servidor repete as conferências, porque a tela pode ser contornada
+- A senha nunca aparece na tela nem volta do servidor, e é guardada com hash
+
+**Lista**
+- Mostra só o nome de usuário, com "(você)" ao lado do próprio
+- Cada outro usuário tem o botão Remover, que abre um modal de confirmação ("Remover usuário?", com Cancelar e Remover), igual ao da exclusão de peças
+- Trava: ninguém remove a si mesma (a tela esconde o botão e o servidor também recusa). Por isso o último usuário nunca pode ser removido
+- Remover um usuário também encerra as sessões dele no servidor
+
+---
+
 ## Funcionalidades essenciais (MVP)
 - Login de usuários
+- Cadastro e remoção de usuários pela tela de Usuários
 - Cadastro, edição e exclusão de peças com vários tamanhos, por categoria
 - Lista de estoque com busca, filtro e alerta de estoque baixo (3 peças ou menos por tamanho)
 - Baixa de várias peças de uma vez, com checkout
@@ -202,14 +226,15 @@
 - Backend: Node.js com Express, entregando a pasta `public`; os dados ficam em `data/*.json` (peças, vendas e usuários), gravados com `fs`
 - Login: o servidor confere usuário e senha e entrega um token (`crypto.randomUUID`), guardado na memória do servidor (`sessoes`) e no `localStorage` do navegador
 - Um middleware (`verificarToken`) protege as rotas de dados
+- As senhas são guardadas com hash (`scrypt` do `crypto`, com sal aleatório, no formato `sal:hash`), e o login confere pelo hash
 - O botão Sair chama `POST /api/logout`, que apaga o token do `sessoes` no servidor, e só depois limpa o token do navegador
-- Rotas: `POST /api/login`, `GET /api/sessao`, `POST /api/logout`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`, `GET /api/vendas`, `POST /api/devolucao`
+- Rotas: `POST /api/login`, `GET /api/sessao`, `POST /api/logout`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`, `GET /api/vendas`, `POST /api/devolucao`, `GET` e `POST /api/usuarios`, `DELETE /api/usuarios/:usuario`
+- O `senha.js` cuida de todos os olhinhos de senha (login e Usuários), e todos os modais compartilham o estilo do elemento `dialog`
 - O `global.js` funciona como porteiro nas telas internas: confere o token e manda para o Login se não valer (o Login nunca o carrega)
 - Categorias e seus tamanhos: um objeto em que a categoria é a chave e os tamanhos são a lista
 - Cada peça guarda `tamanhos` como um objeto (tamanho → quantidade)
 
 ## Em aberto
-- Como a Marina cadastra os usuários da loja
 - O que acontece no modal de cadastro se a categoria for trocada depois de preencher os tamanhos
 - Emojis no lugar dos ícones (o Font Awesome gratuito não tem ícone de calça)
 
@@ -217,5 +242,5 @@
 - Na Baixa, a mensagem "Há apenas __ em estoque" pode mostrar quanto ainda resta para adicionar (estoque do tamanho menos o que já está no checkout), em vez do total do estoque
 
 ## Melhorias de segurança para depois
-- Guardar as senhas com hash, e não em texto puro
-- Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste)
+- Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste e os usuários, com o hash das senhas, e o repositório é público)
+- Trocar o usuário `equipe` por um novo, com senha nova, porque o hash dele foi commitado por engano
