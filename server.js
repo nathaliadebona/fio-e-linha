@@ -21,13 +21,40 @@ function verificarToken(req, res, next) {
     }
 }
 
+function gerarHash(senha) {
+    const sal = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.scryptSync(senha, sal, 64).toString('hex');
+
+    return `${sal}:${hash}`;
+}
+
+function conferirSenha(senha, guardado) {
+    const [sal, hash] = guardado.split(':');
+    const hashTentativa = crypto.scryptSync(senha, sal, 64).toString('hex');
+
+    return hashTentativa === hash;
+}
+
+let precisaSalvar = false;
+
+usuarios.forEach((u) => {
+    if (!u.senha.includes(':')) {
+        u.senha = gerarHash(u.senha);
+        precisaSalvar = true;
+    }
+});
+
+if (precisaSalvar) {
+    fs.writeFileSync('./data/usuarios.json', JSON.stringify(usuarios, null, 2));
+}
+
 app.get('/', (req, res) => {
     res.redirect('/login.html');
 });
 
 app.post('/api/login', (req, res) => {
     const usuarioEncontrado = usuarios.find((u) => {
-        return u.usuario === req.body.usuario && u.senha === req.body.senha;
+        return u.usuario === req.body.usuario && conferirSenha(req.body.senha, u.senha);
     });
     
     if (usuarioEncontrado) {
