@@ -24,3 +24,24 @@ h2 {
     margin-bottom: 1.5rem;
     text-align: center;
 }
+
+#lista-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 28rem;
+    list-style: none;
+}
+
+#lista-usuarios li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo-alt);
+}
+
+.nome-usuario {
+    font-weight: 600;
+}
