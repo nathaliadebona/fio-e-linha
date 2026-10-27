@@ -3,9 +3,9 @@ const usuarios = require('./data/usuarios.json');
 const pecas = require('./data/pecas.json');
 const vendas = require('./data/vendas.json');
 const fs = require('fs');
-   const crypto = require('crypto');
+const crypto = require('crypto');
 const app = express();
-   const sessoes = Object.create(null);
+const sessoes = Object.create(null);
 
 app.use(express.json());
 
@@ -226,5 +226,12 @@ app.post('/api/devolucao', verificarToken, (req, res) => {
     res.json({ ok: true });
 });
 
-app.listen(3000);
+app.post('/api/logout', verificarToken, (req, res) => {
+    const token = req.headers.authorization;
 
+    delete sessoes[token];
+
+    res.json({ ok: true });
+});
+
+app.listen(3000);

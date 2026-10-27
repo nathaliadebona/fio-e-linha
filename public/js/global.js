@@ -65,7 +65,9 @@ document.body.prepend(montarMenu());
 
 const sairBtn = document.getElementById('sair-btn');
 
-sairBtn.addEventListener('click', () => {
+sairBtn.addEventListener('click', async () => {
+    await fetch('/api/logout', { method: 'POST', headers: { Authorization: token } });
+
     localStorage.removeItem('token');
     window.location.href = '/login.html';
 });

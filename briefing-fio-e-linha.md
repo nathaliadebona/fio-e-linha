@@ -19,7 +19,7 @@
 - Fundo (off-white): `#FAF6F0`
 - Areia (menu, cartões, linhas): `#EFE6DA`
 - Terracota (botões principais e ações): `#B5532F`, hover `#9A4628`
-- Verde-oliva (detalhes, preços, títulos): `#6B6F3A`
+- Verde-oliva (detalhes, preços, títulos): `#5F6333` (um tom mais fechado que o original `#6B6F3A`, para o texto pequeno passar de 4,5:1 de contraste sobre o areia)
 - Texto (marrom escuro): `#3B2F2A`
 - Alerta de estoque baixo (ocre): `#D9A03F`
 - Excluir e erros (vermelho tijolo): `#A63D2F`
