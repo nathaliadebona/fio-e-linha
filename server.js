@@ -261,4 +261,57 @@ app.post('/api/logout', verificarToken, (req, res) => {
     res.json({ ok: true });
 });
 
+app.get('/api/usuarios', verificarToken, (req, res) => {
+    res.json(usuarios.map((u) => u.usuario));
+});
+
+app.post('/api/usuarios', verificarToken, (req, res) => {
+    const { usuario, senha } = req.body;
+
+    if (typeof usuario !== 'string' || typeof senha !== 'string' || usuario.trim() === '' || senha.length < 6) {
+        return res.status(400).json({ ok: false });
+    }
+
+    const nome = usuario.trim();
+
+    const jaExiste = usuarios.some((u) => {
+        return u.usuario.toLowerCase() === nome.toLowerCase();
+    });
+
+    if (jaExiste) {
+        return res.status(409).json({ ok: false });
+    }
+
+    usuarios.push({ usuario: nome, senha: gerarHash(senha) });
+
+    fs.writeFileSync('./data/usuarios.json', JSON.stringify(usuarios, null, 2));
+
+    res.json({ ok: true });
+});
+
+app.delete('/api/usuarios/:usuario', verificarToken, (req, res) => {
+    const nome = req.params.usuario;
+    const indice = usuarios.findIndex((u) => u.usuario === nome);
+
+    if (indice === -1) {
+        return res.status(404).json({ ok: false });
+    }
+
+    if (sessoes[req.headers.authorization] === nome) {
+        return res.status(403).json({ ok: false });
+    }
+
+    usuarios.splice(indice, 1);
+
+    fs.writeFileSync('./data/usuarios.json', JSON.stringify(usuarios, null, 2));
+
+    Object.keys(sessoes).forEach((token) => {
+        if (sessoes[token] === nome) {
+            delete sessoes[token];
+        }
+    });
+
+    res.json({ ok: true });
+});
+
 app.listen(3000);

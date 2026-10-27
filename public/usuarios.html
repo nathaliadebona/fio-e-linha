@@ -54,7 +54,18 @@
         <ul id="lista-usuarios"></ul>
     </main>
 
+    <dialog id="modal-remover" role="alertdialog" aria-labelledby="titulo-remover">
+        <h2 id="titulo-remover">Remover usuário?</h2>
+        <p id="remover-texto"></p>
+
+        <div class="acoes-modal">
+            <button type="button" id="cancelar-remover" class="btn-secundario">Cancelar</button>
+            <button type="button" id="confirmar-remover" class="btn-primario">Remover</button>
+        </div>
+    </dialog>
+
     <script src="js/global.js"></script>
+    <script src="js/senha.js"></script>
     <script src="js/usuarios.js"></script>
 </body>
 </html>
