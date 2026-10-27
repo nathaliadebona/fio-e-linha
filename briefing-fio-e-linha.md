@@ -138,6 +138,7 @@
 
 **No servidor**
 - A rota de baixa confere todas as linhas antes de mexer em qualquer uma, e só então desconta o estoque, registra a venda em `data/vendas.json` e grava os arquivos
+- Cada quantidade precisa ser um número inteiro maior que zero, e as linhas repetidas da mesma peça e tamanho são somadas antes de conferir o estoque, para o tamanho nunca ficar negativo (mesmo que a chamada venha direto da API, sem passar pela tela)
 - Cada venda guarda `id`, o usuário que a registrou (vindo do token), a data e hora e os itens, com nome, cor, preço do dia, tamanho, quantidade e `devolvida` (que começa em zero)
 - O preço de cada item é lido da peça no servidor, e não do que o navegador envia, e fica congelado no dia da venda
 
@@ -165,6 +166,7 @@
 - A barra mostra quantos produtos estão selecionados
 - Abre um modal com os produtos e a quantidade a devolver, que **trava** no máximo vendido
 - Cada item devolvido registra de qual venda veio e a data/hora da devolução
+- O servidor recusa quantidades que não sejam inteiros maiores que zero e soma as linhas repetidas (mesma venda, peça e tamanho) antes de conferir o que ainda pode voltar, para nunca devolver mais do que foi vendido
 - O servidor guarda, em cada produto da venda, quantas peças já voltaram e uma lista com a quantidade, o usuário e a data e hora de cada devolução
 - A caixa do produto devolvido por inteiro fica desabilitada, e a seleção é zerada sempre que a lista é redesenhada
 - Mensagem: "Produto devolvido ao estoque"
@@ -200,7 +202,8 @@
 - Backend: Node.js com Express, entregando a pasta `public`; os dados ficam em `data/*.json` (peças, vendas e usuários), gravados com `fs`
 - Login: o servidor confere usuário e senha e entrega um token (`crypto.randomUUID`), guardado na memória do servidor (`sessoes`) e no `localStorage` do navegador
 - Um middleware (`verificarToken`) protege as rotas de dados
-- Rotas: `POST /api/login`, `GET /api/sessao`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`, `GET /api/vendas`, `POST /api/devolucao`
+- O botão Sair chama `POST /api/logout`, que apaga o token do `sessoes` no servidor, e só depois limpa o token do navegador
+- Rotas: `POST /api/login`, `GET /api/sessao`, `POST /api/logout`, `GET` e `POST /api/pecas`, `PUT` e `DELETE /api/pecas/:id`, `POST /api/baixa`, `GET /api/vendas`, `POST /api/devolucao`
 - O `global.js` funciona como porteiro nas telas internas: confere o token e manda para o Login se não valer (o Login nunca o carrega)
 - Categorias e seus tamanhos: um objeto em que a categoria é a chave e os tamanhos são a lista
 - Cada peça guarda `tamanhos` como um objeto (tamanho → quantidade)
@@ -214,7 +217,5 @@
 - Na Baixa, a mensagem "Há apenas __ em estoque" pode mostrar quanto ainda resta para adicionar (estoque do tamanho menos o que já está no checkout), em vez do total do estoque
 
 ## Melhorias de segurança para depois
-- Nas rotas de baixa e de devolução, validar a quantidade no servidor (só inteiros positivos) e somar as linhas repetidas da mesma peça e tamanho antes de conferir o estoque
 - Guardar as senhas com hash, e não em texto puro
-- Rota de logout que também apague o token no servidor
 - Decidir o que fazer com a pasta `data` no repositório (hoje tem peças de teste)
