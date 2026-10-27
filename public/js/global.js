@@ -1,7 +1,8 @@
 const itensMenu = [
     { pagina: 'estoque', href: 'estoque.html', icone: 'fa-boxes-stacked', texto: 'Estoque' },
     { pagina: 'baixa', href: 'baixa.html', icone: 'fa-cart-shopping', texto: 'Baixa' },
-    { pagina: 'historico', href: 'historico.html', icone: 'fa-clock-rotate-left', texto: 'Histórico' }
+    { pagina: 'historico', href: 'historico.html', icone: 'fa-clock-rotate-left', texto: 'Histórico' },
+    { pagina: 'usuarios', href: 'usuarios.html', icone: 'fa-users', texto: 'Usuários' }
 ];
 
 function montarMenu() {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuários - Fio &amp; Linha</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/usuarios.css">
+</head>
+<body data-pagina="usuarios">
+    <main>
+        <h1>Usuários</h1>
+
+        <form action="" id="form-usuario">
+            <div class="campo">
+                <label for="novo-usuario">Usuário</label>
+                <input type="text" name="novo-usuario" id="novo-usuario" required autocomplete="off">
+            </div>
+
+            <div class="campo">
+                <label for="nova-senha">Senha</label>
+                <div class="area-senha">
+                    <input type="password" name="nova-senha" id="nova-senha" required autocomplete="new-password">
+                    <button type="button" class="toggle-senha" aria-label="Mostrar senha">
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="confirmar-senha">Confirmar senha</label>
+                <div class="area-senha">
+                    <input type="password" name="confirmar-senha" id="confirmar-senha" required autocomplete="new-password">
+                    <button type="button" class="toggle-senha" aria-label="Mostrar confirmação da senha">
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <p id="erro-usuario" class="mensagem-erro" role="alert" hidden></p>
+
+            <button type="submit" id="cadastrar" class="btn-primario">Cadastrar</button>
+        </form>
+
+        <h2>Quem tem acesso</h2>
+
+        <ul id="lista-usuarios"></ul>
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/usuarios.js"></script>
+</body>
+</html>
