@@ -3,11 +3,12 @@
     flex-direction: column;
     gap: 1rem;
     max-width: 28rem;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
 }
 
 h2 {
-    margin-bottom: 1rem;
+    max-width: 28rem;
+    margin: 0 auto 1rem;
     font-family: var(--fonte-titulos);
     font-size: 1.5rem;
     color: var(--cor-detalhes);
@@ -30,6 +31,7 @@ h2 {
     flex-direction: column;
     gap: 0.5rem;
     max-width: 28rem;
+    margin: 0 auto;
     list-style: none;
 }
 
