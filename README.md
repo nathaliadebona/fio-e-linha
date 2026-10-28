@@ -123,10 +123,31 @@ Funcionalidades planejadas, ainda não implementadas:
 
 ## Prints
 
-<!--
-Coloque os prints aqui, arrastando cada imagem para o editor do GitHub para gerar os links.
-Ordem sugerida: lista do estoque com o alerta de estoque baixo, baixa com itens no checkout, histórico com um produto devolvido, tela de usuários.
--->
+### Estoque
+Lista de peças com o alerta de estoque baixo e as etiquetas de tamanho destacadas.
+
+![Tela de estoque com o alerta de estoque baixo](assets/estoque.png)
+
+![Modal com as peças e os tamanhos que estão acabando](assets/estoque-baixo.png)
+
+### Baixa
+No desktop, o checkout fica sempre visível ao lado da lista.
+
+![Tela de baixa com o checkout ao lado da lista](assets/baixa.png)
+
+No celular, um botão flutuante mostra quantos itens foram adicionados e leva até o checkout.
+
+<img src="assets/baixa-celular.png" alt="Tela de baixa no celular, com menu inferior e botão flutuante" width="320">
+
+### Histórico
+Vendas com o total e o registro de quem vendeu. O produto devolvido é marcado com cor, texto e ícone.
+
+![Histórico de vendas com um produto devolvido](assets/historico.png)
+
+### Usuários
+Cadastro e remoção de quem tem acesso ao sistema.
+
+![Tela de usuários com formulário e lista de acesso](assets/usuarios.png)
 
 ---
 
